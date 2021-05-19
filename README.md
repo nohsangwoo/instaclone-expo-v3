@@ -26,4 +26,11 @@ And it worked !
 - npm install @react-navigation/native
 - expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
 
-# about haha...
+# debugging in expo
+
+1. react native tools extension 설치
+2. vsc settings에서 react native config에서 port 19001로 변경
+3. debugg탭에서 create launch.json 후 devug in Exponent 선택
+4. expo 로그인
+5. expo start후 앱 실행
+6. 이후 콘솔창에서 확인

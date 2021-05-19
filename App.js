@@ -14,7 +14,7 @@ export default function App() {
     const fontPromises = fontsToLoad.map(font => Font.loadAsync(font));
     console.log(fontPromises);
     const imagesToLoad = [
-      require('./assets/logo.png'),
+      require('./assets/splash.png'),
       'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/840px-Instagram_logo.svg.png',
     ];
     const imagePromises = imagesToLoad.map(image => Asset.loadAsync(image));
