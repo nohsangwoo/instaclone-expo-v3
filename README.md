@@ -34,3 +34,5 @@ And it worked !
 4. expo 로그인
 5. expo start후 앱 실행
 6. 이후 콘솔창에서 확인
+
+- https://www.youtube.com/watch?v=9g2_j9U_l2U 참고
