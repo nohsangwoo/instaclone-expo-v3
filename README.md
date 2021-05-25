@@ -109,3 +109,5 @@ https://reactnavigation.org/docs/stack-navigator
   https://docs.expo.io/versions/latest/sdk/appearance/
 
 - app.json에 ios 및 android 등의 설정이 기록돼있음
+
+# 14.5 Create Account part One
