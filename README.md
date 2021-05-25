@@ -123,3 +123,5 @@ https://dev-yakuza.posstree.com/ko/react-native/install-on-mac/
 # eject issue
 
 - https://96yj.tistory.com/7
+
+# 14.8 Natural Forms part Two
