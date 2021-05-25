@@ -15,6 +15,8 @@ export default function Login() {
     console.log(data);
   };
 
+  // 맨처음 가상의 공간에 input값을 register로 설정한다음
+  // 입력되는 input창에서 setValue를 onChangeText가 될때마다 저장해주는 방식으로 사용
   useEffect(() => {
     register('username');
     register('password');
