@@ -127,3 +127,15 @@ https://dev-yakuza.posstree.com/ko/react-native/install-on-mac/
 # 14.8 Natural Forms part Two
 
 # 14.9 Login Screen
+
+# TouchableWithoutFeedback 버그 우회
+
+```
+<TouchableWithoutFeedback
+      style={{ flex: 1 }}
+      onPress={dismissKeyboard}
+      disabled={Platform.OS === 'WEB'}
+    >
+```
+
+# 14.10 React Hooks Forms on Native
