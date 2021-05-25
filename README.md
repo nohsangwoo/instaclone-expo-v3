@@ -36,3 +36,6 @@ And it worked !
 6. 이후 콘솔창에서 확인
 
 - https://www.youtube.com/watch?v=9g2_j9U_l2U 참고
+
+- stack navigator설치
+  npm install @react-navigation/stack
