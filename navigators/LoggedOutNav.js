@@ -8,7 +8,10 @@ const Stack = createStackNavigator();
 
 export default function LoggedOutNav() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      mode="modal"
+      screenOptions={{ headerBackTitleVisible: false }}
+    >
       <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="LogIn" component={LogIn} />
       <Stack.Screen name="CreateAccount" component={CreateAccount} />

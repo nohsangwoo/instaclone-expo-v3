@@ -44,3 +44,59 @@ And it worked !
 
 - TouchableOpacity
   해당 screen으로 이동하는 방법 중 하나 말그대로 터치하면 살짝 흐려지는 효과와 함께 해당 스크린으로 이동함
+
+# about reactnavigation
+
+- https://reactnavigation.org/
+
+# 14.2 Navigator Props
+
+https://reactnavigation.org/docs/stack-navigator
+
+- initialRouteName
+  첫화면의 라우트를 지정할수있음
+
+```
+  return (
+    <!-- CreateAccount가 가장 첫 화면으로 나오게 만든다 -->
+    <Stack.Navigator initialRouteName="CreateAccount">
+      <Stack.Screen name="Welcome" component={Welcome} />
+      <Stack.Screen name="LogIn" component={LogIn} />
+      <Stack.Screen name="CreateAccount" component={CreateAccount} />
+    </Stack.Navigator>
+  );
+```
+
+- mode
+  화면이 띄워지는 형식을 지정
+
+```
+  return (
+    <!-- 새로운 화면이 띄워지는 형식을 바꿈(이경우는 모달형식으로 새창을 띄워라! 기본값은 card형식이다) -->
+    <Stack.Navigator mode="modal">
+      <Stack.Screen name="Welcome" component={Welcome} />
+      <Stack.Screen name="LogIn" component={LogIn} />
+      <Stack.Screen name="CreateAccount" component={CreateAccount} />
+    </Stack.Navigator>
+  );
+```
+
+- screen options (하위 route에 옵션을 전체 적용함
+
+````
+  <Stack.Navigator
+      mode="modal"
+      screenOptions={{ headerBackTitleVisible: false }}
+    >
+      <Stack.Screen name="Welcome" component={Welcome} />
+      <Stack.Screen name="LogIn" component={LogIn} />
+      <Stack.Screen
+        options={{
+          headerBackTitleVisible: false,
+        }}
+        name="CreateAccount"
+        component={CreateAccount}
+      />
+    </Stack.Navigator>
+```)
+````
