@@ -1,25 +1,62 @@
+import { gql, useMutation } from '@apollo/client';
 import React, { useRef } from 'react';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { isLoggedInVar } from '../apollo';
 import AuthButton from '../components/auth/AuthButton';
 import AuthLayout from '../components/auth/AuthLayout';
 import { TextInput } from '../components/auth/AuthShared';
 
+const LOGIN_MUTATION = gql`
+  mutation login($username: String!, $password: String!) {
+    login(username: $username, password: $password) {
+      ok
+      token
+      error
+    }
+  }
+`;
+
 export default function Login() {
-  const { register, handleSubmit, setValue } = useForm();
+  const { register, handleSubmit, setValue, watch } = useForm();
   const passwordRef = useRef();
+
+  const onCompleted = data => {
+    const {
+      login: { ok, token },
+    } = data;
+    if (ok) {
+      isLoggedInVar(true);
+    }
+  };
+
+  const [logInMutation, { loading }] = useMutation(LOGIN_MUTATION, {
+    onCompleted,
+  });
+
   const onNext = nextOne => {
     nextOne?.current?.focus();
   };
+
   const onValid = data => {
-    console.log(data);
+    if (!loading) {
+      logInMutation({
+        variables: {
+          ...data,
+        },
+      });
+    }
   };
 
   // 맨처음 가상의 공간에 input값을 register로 설정한다음
   // 입력되는 input창에서 setValue를 onChangeText가 될때마다 저장해주는 방식으로 사용
   useEffect(() => {
-    register('username');
-    register('password');
+    register('username', {
+      required: true,
+    });
+    register('password', {
+      required: true,
+    });
   }, [register]);
 
   return (
@@ -44,7 +81,8 @@ export default function Login() {
       />
       <AuthButton
         text="Log In"
-        disabled={false}
+        loading={loading}
+        disabled={!watch('username') || !watch('password')}
         onPress={handleSubmit(onValid)}
       />
     </AuthLayout>
