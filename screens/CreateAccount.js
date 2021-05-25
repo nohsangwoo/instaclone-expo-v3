@@ -17,12 +17,15 @@ export default function CreateAccount() {
   const onDone = () => {
     alert('done!');
   };
+
+  console.log(Platform.OS === 'ios');
   return (
     <AuthLayout>
       <KeyboardAvoidingView
         style={{
           width: '100%',
         }}
+        // 키보드가 나타날때 대상의 input을 화면의 중앙으로 몰아주는 기능인듯
         behavior="padding"
         keyboardVerticalOffset={Platform.OS === 'ios' ? 30 : 0}
       >
