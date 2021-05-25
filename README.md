@@ -39,3 +39,8 @@ And it worked !
 
 - stack navigator설치
   npm install @react-navigation/stack
+
+# 14.1 Moving Through Screens
+
+- TouchableOpacity
+  해당 screen으로 이동하는 방법 중 하나 말그대로 터치하면 살짝 흐려지는 효과와 함께 해당 스크린으로 이동함
