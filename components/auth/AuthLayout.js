@@ -27,9 +27,12 @@ export default function AuthLayout({ children }) {
     Keyboard.dismiss();
   };
   return (
+    // TouchableWithoutFeedback 버그 우회
     <TouchableWithoutFeedback
       style={{ flex: 1 }}
+      // 바깥쪽을 클릭한다면 키보드가 사라지게 설정
       onPress={dismissKeyboard}
+      // 키보드가 사라지는 기능(정확히 말하면 TouchableWithoutFeedback의 기능)을 WEB에선 버그때문에 해제해준다
       disabled={Platform.OS === 'WEB'}
     >
       <Container>
