@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
-import { KeyboardAvoidingView, Platform, TextInput } from 'react-native';
-import styled from 'styled-components/native';
-
+import { KeyboardAvoidingView, Platform } from 'react-native';
 import AuthButton from '../components/auth/AuthButton';
 import AuthLayout from '../components/auth/AuthLayout';
+import { TextInput } from '../components/auth/AuthShared';
 
 export default function CreateAccount() {
+  // dom? 객체를 컨트롤 하기위한 useRef
   const lastNameRef = useRef();
   const usernameRef = useRef();
   const emailRef = useRef();
@@ -18,64 +18,46 @@ export default function CreateAccount() {
     alert('done!');
   };
 
-  console.log(Platform.OS === 'ios');
   return (
     <AuthLayout>
-      <KeyboardAvoidingView
-        style={{
-          width: '100%',
-        }}
-        // 키보드가 나타날때 대상의 input을 화면의 중앙으로 몰아주는 기능인듯
-        behavior="padding"
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 30 : 0}
-      >
-        <TextInput
-          placeholder="First Name"
-          placeholderTextColor="gray"
-          returnKeyType="next"
-          style={{ backgroundColor: 'white', width: '100%' }}
-          onSubmitEditing={() => onNext(lastNameRef)}
-        />
-        <TextInput
-          ref={lastNameRef}
-          placeholder="Last Name"
-          placeholderTextColor="gray"
-          returnKeyType="next"
-          style={{ backgroundColor: 'white', width: '100%' }}
-          onSubmitEditing={() => onNext(usernameRef)}
-        />
-        <TextInput
-          ref={usernameRef}
-          placeholder="Username"
-          placeholderTextColor="gray"
-          returnKeyType="next"
-          style={{ backgroundColor: 'white', width: '100%' }}
-          onSubmitEditing={() => onNext(emailRef)}
-        />
-        <TextInput
-          ref={emailRef}
-          placeholder="Email"
-          placeholderTextColor="gray"
-          keyboardType="email-address"
-          returnKeyType="next"
-          style={{ backgroundColor: 'white', width: '100%' }}
-          onSubmitEditing={() => onNext(passwordRef)}
-        />
-        <TextInput
-          ref={passwordRef}
-          placeholder="Password"
-          placeholderTextColor="gray"
-          secureTextEntry
-          returnKeyType="done"
-          style={{ backgroundColor: 'white', width: '100%' }}
-          onSubmitEditing={onDone}
-        />
-        <AuthButton
-          text="Create Account"
-          disabled={true}
-          onPress={() => null}
-        />
-      </KeyboardAvoidingView>
+      <TextInput
+        placeholder="First Name"
+        returnKeyType="next"
+        onSubmitEditing={() => onNext(lastNameRef)}
+        placeholderTextColor={'rgba(255, 255, 255, 0.6)'}
+      />
+      <TextInput
+        ref={lastNameRef}
+        placeholder="Last Name"
+        returnKeyType="next"
+        onSubmitEditing={() => onNext(usernameRef)}
+        placeholderTextColor={'rgba(255, 255, 255, 0.6)'}
+      />
+      <TextInput
+        ref={usernameRef}
+        placeholder="Username"
+        returnKeyType="next"
+        onSubmitEditing={() => onNext(emailRef)}
+        placeholderTextColor={'rgba(255, 255, 255, 0.6)'}
+      />
+      <TextInput
+        ref={emailRef}
+        placeholder="Email"
+        keyboardType="email-address"
+        returnKeyType="next"
+        onSubmitEditing={() => onNext(passwordRef)}
+        placeholderTextColor={'rgba(255, 255, 255, 0.6)'}
+      />
+      <TextInput
+        ref={passwordRef}
+        placeholder="Password"
+        secureTextEntry
+        returnKeyType="done"
+        onSubmitEditing={onDone}
+        lastOne={true}
+        placeholderTextColor={'rgba(255, 255, 255, 0.6)'}
+      />
+      <AuthButton text="Create Account" disabled={true} onPress={() => null} />
     </AuthLayout>
   );
 }
