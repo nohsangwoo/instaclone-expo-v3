@@ -42,7 +42,7 @@ export default function Welcome({ navigation }) {
   return (
     <Container>
       {/* resizemode: 가로나 세로중 넓은 부분이 100%를 차지할때 까지만 늘리는 것 */}
-      <Logo resizeMode="cover" source={require('../assets/logo.png')} />
+      <Logo resizeMode="contain" source={require('../assets/logo.png')} />
       <CreateAccount disabled={false} onPress={goToCreateAccount}>
         <CreateAccountText>Create New Account</CreateAccountText>
       </CreateAccount>

@@ -111,3 +111,15 @@ https://reactnavigation.org/docs/stack-navigator
 - app.json에 ios 및 android 등의 설정이 기록돼있음
 
 # 14.5 Create Account part One
+
+# expo eject tip1
+
+eject를 할 때, ExpoKit이라는 네이티브 라이브러리를 남겨놓으면 EXPO에 내장된 다양한 React 컴포넌트들을 이용해 네이티브 기능을 쉽게 사용할 수 있습니다. 실제로 꾹꾹이 프로젝트에서도, EXPO의 Google 지도 컴포넌트(<MapView />)를 이용해 빠르게 지도 기능을 구현할 수 있었습니다.
+
+# react native cli setup
+
+https://dev-yakuza.posstree.com/ko/react-native/install-on-mac/
+
+# eject issue
+
+- https://96yj.tistory.com/7

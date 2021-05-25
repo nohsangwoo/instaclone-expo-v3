@@ -24,7 +24,9 @@ export default function LoggedOutNav() {
         options={{
           // header 부분 title을 없앤다
           headerTitle: false,
+          // header가 있지만 보이지만 않게 해주는 기능
           headerTransparent: true,
+          // header의 색을 하얀색으로 변경(배경색 아님)
           headerTintColor: 'white',
         }}
         name="CreateAccount"
