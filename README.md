@@ -100,3 +100,12 @@ https://reactnavigation.org/docs/stack-navigator
     </Stack.Navigator>
 ```)
 ````
+
+# 14.3 Dark Mode
+
+- styled-components in react native expo
+  https://styled-components.com/
+- 외형을 어떤걸 선택했는지 기억해줌
+  https://docs.expo.io/versions/latest/sdk/appearance/
+
+- app.json에 ios 및 android 등의 설정이 기록돼있음
