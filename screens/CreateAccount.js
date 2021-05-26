@@ -31,6 +31,7 @@ export default function CreateAccount({ navigation }) {
   const { register, handleSubmit, setValue, getValues } = useForm();
 
   // createAccount mutation이 성공했을때 실행되는 작업
+  // mutation 성공시 LogIn Route로 이동
   const onCompleted = data => {
     const {
       createAccount: { ok },
@@ -39,6 +40,7 @@ export default function CreateAccount({ navigation }) {
     // from에서 submit한 시점에서 전달된 inputvalue
     const { username, password } = getValues();
     if (ok) {
+      // LogIn route로 이동시 props를 함께 전달
       navigation.navigate('LogIn', {
         username,
         password,

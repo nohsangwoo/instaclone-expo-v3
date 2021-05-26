@@ -16,11 +16,14 @@ const LOGIN_MUTATION = gql`
   }
 `;
 
+// 전달받은 props사용방법
 export default function Login({ route: params }) {
+  // console.log(route);
   const { register, handleSubmit, setValue, watch } = useForm({
+    // hook form에서 기본값으로 지정
     defaultValues: {
-      password: params?.password,
-      username: params?.username,
+      password: params?.params?.password,
+      username: params?.params?.username,
     },
   });
 
@@ -73,6 +76,7 @@ export default function Login({ route: params }) {
     <AuthLayout>
       <TextInput
         ref={usernameRef}
+        // default value를 적용 시키기 위한 작업
         value={watch('username')}
         placeholder="Username"
         returnKeyType="next"
@@ -82,6 +86,7 @@ export default function Login({ route: params }) {
         onChangeText={text => setValue('username', text)}
       />
       <TextInput
+        // default value를 적용 시키기 위한 작업
         value={watch('password')}
         ref={passwordRef}
         placeholder="Password"

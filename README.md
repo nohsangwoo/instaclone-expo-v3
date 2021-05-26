@@ -143,7 +143,15 @@ https://dev-yakuza.posstree.com/ko/react-native/install-on-mac/
 # 14.11 Apollo Client
 
 # 14.12 Log In Mutation & reactive variable
-
+- 다른 route로 갈때 props를 전달하고 전달 받는 과정 학습
+- route로 이동시 props와 함께 전달 하는 방법
+```
+navigation.navigate('LogIn', {
+  username,
+  password,
+});
+```
+- 
 # ngrok or localtunnel
 
 https://ngrok.com/
