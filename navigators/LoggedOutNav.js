@@ -20,6 +20,8 @@ export default function LoggedOutNav() {
         // header의 색을 하얀색으로 변경(배경색 아님)
         headerTintColor: 'white',
       }}
+      // 처음으로 표시되는 route 초기화
+      initialRouteName="Welcome"
     >
       <Stack.Screen
         name="Welcome"

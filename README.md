@@ -148,3 +148,6 @@ https://dev-yakuza.posstree.com/ko/react-native/install-on-mac/
 
 https://ngrok.com/
 https://github.com/localtunnel/localtunnel
+
+- ActivityIndicator 
+로딩애니메이션

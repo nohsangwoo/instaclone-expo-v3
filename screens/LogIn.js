@@ -82,6 +82,7 @@ export default function Login() {
       <AuthButton
         text="Log In"
         loading={loading}
+        // watch로 실시간 체크하여 username부분과 password부분의 Input value가 빈칸이라면 submit버튼을 비활성화 시킨다
         disabled={!watch('username') || !watch('password')}
         onPress={handleSubmit(onValid)}
       />

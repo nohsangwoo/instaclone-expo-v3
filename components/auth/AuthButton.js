@@ -20,6 +20,7 @@ const ButtonText = styled.Text`
 export default function AuthButton({ onPress, disabled, text, loading }) {
   return (
     <Button disabled={disabled} onPress={onPress}>
+      {/* 로딩중이라면 ActivityIndicator로 로딩 애니메이션 재생  */}
       {loading ? (
         <ActivityIndicator color="white" />
       ) : (
