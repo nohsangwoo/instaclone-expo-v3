@@ -143,19 +143,35 @@ https://dev-yakuza.posstree.com/ko/react-native/install-on-mac/
 # 14.11 Apollo Client
 
 # 14.12 Log In Mutation & reactive variable
+
 - 다른 route로 갈때 props를 전달하고 전달 받는 과정 학습
 - route로 이동시 props와 함께 전달 하는 방법
+
 ```
 navigation.navigate('LogIn', {
   username,
   password,
 });
 ```
-- 
+
+-
+
 # ngrok or localtunnel
 
 https://ngrok.com/
 https://github.com/localtunnel/localtunnel
 
-- ActivityIndicator 
-로딩애니메이션
+- ActivityIndicator
+  로딩애니메이션
+
+# https://reactnative.directory/
+
+- react native directory
+  react native에서 사용할수있는 api들을 모아둔 패키지들
+
+# 14.14 AsyncStorage part One
+
+- redux persist 같은 설정
+  https://github.com/react-native-async-storage/async-storage 참조
+  너무 많이 쓰는 패키지라 공식문서에도 소개됨
+  https://docs.expo.io/versions/latest/sdk/async-storage/
