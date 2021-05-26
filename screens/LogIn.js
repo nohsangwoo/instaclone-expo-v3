@@ -1,6 +1,5 @@
 import { gql, useMutation } from '@apollo/client';
-import React, { useRef } from 'react';
-import { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { isLoggedInVar } from '../apollo';
 import AuthButton from '../components/auth/AuthButton';
@@ -17,8 +16,15 @@ const LOGIN_MUTATION = gql`
   }
 `;
 
-export default function Login() {
-  const { register, handleSubmit, setValue, watch } = useForm();
+export default function Login({ route: params }) {
+  const { register, handleSubmit, setValue, watch } = useForm({
+    defaultValues: {
+      password: params?.password,
+      username: params?.username,
+    },
+  });
+
+  const usernameRef = useRef();
   const passwordRef = useRef();
 
   const onCompleted = data => {
@@ -48,6 +54,10 @@ export default function Login() {
     }
   };
 
+  useEffect(() => {
+    usernameRef.current.focus();
+  }, []);
+
   // 맨처음 가상의 공간에 input값을 register로 설정한다음
   // 입력되는 input창에서 setValue를 onChangeText가 될때마다 저장해주는 방식으로 사용
   useEffect(() => {
@@ -62,6 +72,8 @@ export default function Login() {
   return (
     <AuthLayout>
       <TextInput
+        ref={usernameRef}
+        value={watch('username')}
         placeholder="Username"
         returnKeyType="next"
         autoCapitalize="none"
@@ -70,6 +82,7 @@ export default function Login() {
         onChangeText={text => setValue('username', text)}
       />
       <TextInput
+        value={watch('password')}
         ref={passwordRef}
         placeholder="Password"
         secureTextEntry
