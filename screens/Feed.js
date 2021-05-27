@@ -1,7 +1,7 @@
 import { gql, useQuery } from '@apollo/client';
 import React from 'react';
-import { ActivityIndicator, FlatList, Text, View } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { FlatList, Text, View } from 'react-native';
+import Photo from '../components/Photo';
 import ScreenLayout from '../components/ScreenLayout';
 import { COMMENT_FRAGMENT, PHOTO_FRAGMENT } from '../fragments';
 
@@ -29,12 +29,9 @@ const FEED_QUERY = gql`
 
 export default function Feed() {
   const { data, loading } = useQuery(FEED_QUERY);
+
   const renderPhoto = ({ item: photo }) => {
-    return (
-      <View style={{ flex: 1 }}>
-        <Text style={{ color: 'white' }}>{photo.caption}</Text>
-      </View>
-    );
+    return <Photo {...photo} />;
   };
 
   return (
@@ -43,6 +40,9 @@ export default function Feed() {
         return (<RenderComponent>some contents</RenderComponent>);
       }) */}
       <FlatList
+        style={{ width: '100%' }}
+        // 세로 스크롤바를 안보이게 설정
+        showsVerticalScrollIndicator={false}
         // 사용법
         // 사용되는 데이터(리스트)를 넣어주고
         data={data?.seeFeed}
