@@ -3,9 +3,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Feed from '../screens/Feed';
 import Search from '../screens/Search';
 import Notifications from '../screens/Notifications';
-import Profile from '../screens/Profile';
 import { View } from 'react-native';
 import TabIcon from '../components/nav/TabIcon';
+import Me from '../screens/Me';
+import StackNavFactory from '../components/nav/StackNavFactory';
 
 const Tabs = createBottomTabNavigator();
 
@@ -13,11 +14,12 @@ export default function LoggedInNav() {
   return (
     <Tabs.Navigator
       tabBarOptions={{
-        // 클릭한 tab네비게이션이
+        // 활성화된(선택된) 메뉴의 색
         activeTintColor: 'white',
+        // 글씨 안보이게(아이콘만 보임)
         showLabel: false,
+        // 윗선색과 배경색 지정
         style: {
-          // tabNavigation의 상단부분의 선을 투명하게 만들어줌
           borderTopColor: 'rgba(255, 255, 255, 0.3)',
           backgroundColor: 'black',
         },
@@ -25,25 +27,28 @@ export default function LoggedInNav() {
     >
       <Tabs.Screen
         name="Feed"
-        component={Feed}
         options={{
-          // 이 props의 color는 activeTintColor랑 같음
-          // focused는 현재 해당 route가 활성화된 상태인가 아닌가를 boolean으로 표시함
+          // tabNav의 ActiveTintColor색을 물려받음
+          // focused는 현재 선택된 상태인가 아닌가를 알려줌
+          // size는 font size
           tabBarIcon: ({ focused, color, size }) => (
-            // 해당 탭의 화면이 활성화된 상태라면 icon의 크기가 24로되고 평소엔 20의 크기
             <TabIcon iconName={'home'} color={color} focused={focused} />
           ),
         }}
-      />
+      >
+        {/* stack navigation을 안에서 또 따로 구현하기위해 만들어진 컴포넌트 */}
+        {() => <StackNavFactory screenName="Feed" />}
+      </Tabs.Screen>
       <Tabs.Screen
         name="Search"
-        component={Search}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <TabIcon iconName={'search'} color={color} focused={focused} />
           ),
         }}
-      />
+      >
+        {() => <StackNavFactory screenName="Search" />}
+      </Tabs.Screen>
       <Tabs.Screen
         name="Camera"
         component={View}
@@ -55,22 +60,24 @@ export default function LoggedInNav() {
       />
       <Tabs.Screen
         name="Notifications"
-        component={Notifications}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <TabIcon iconName={'heart'} color={color} focused={focused} />
           ),
         }}
-      />
+      >
+        {() => <StackNavFactory screenName="Notifications" />}
+      </Tabs.Screen>
       <Tabs.Screen
-        name="Profile"
-        component={Profile}
+        name="Me"
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <TabIcon iconName={'person'} color={color} focused={focused} />
           ),
         }}
-      />
+      >
+        {() => <StackNavFactory screenName="Me" />}
+      </Tabs.Screen>
     </Tabs.Navigator>
   );
 }
