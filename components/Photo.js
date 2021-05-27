@@ -49,12 +49,12 @@ const ExtraContainer = styled.View`
 function Photo({ id, user, caption, file, isLiked, likes }) {
   const navigation = useNavigation();
   const { width, height } = useWindowDimensions();
-  const [imageHeight, setImageHeight] = useState(height - 450);
-  useEffect(() => {
-    Image.getSize(file, (width, height) => {
-      setImageHeight(height / 3);
-    });
-  }, [file]);
+  const [imageHeight, setImageHeight] = useState(height - 550);
+  //   useEffect(() => {
+  //     Image.getSize(file, (width, height) => {
+  //         setImageHeight(height / 3);
+  //     });
+  //   }, [file]);
   return (
     <Container>
       <Header onPress={() => navigation.navigate('Profile')}>
