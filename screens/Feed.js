@@ -58,6 +58,7 @@ export default function Feed() {
         // onEndReached가 실행되기 위해서 감지되는 화면 마지막의 위치를 설정가능
         // 기본값은 살짝 마지막에 도달하기 조금 전으로 설정돼있고
         // 값을 0 으로 주면 진짜로 스크롤을 끝까지 내려야만 onEndReached가 감지하고 실행됨
+        // 근데 값을 0으로 주면 버그 생김 그래서 조금이라도 좀 전에 작동하게 설정
         onEndReachedThreshold={0.02}
         // 사용자가 스크롤 마지막으로 도달했다고 react native가 인지했을때
         // 어떤 작동을 할건지 지정 가능
