@@ -238,3 +238,5 @@ cache: new InMemoryCache({
     },
   }),
 ```
+# 15.12 Cache Persist
+persist 적용방법

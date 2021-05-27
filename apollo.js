@@ -45,15 +45,12 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
-const client = new ApolloClient({
-  link: authLink.concat(httpLink),
-  cache: new InMemoryCache({
-    // 타입정책
-    typePolicies: {
-      // 쿼리의 필드의 seeFeed
-      Query: {
-        fields: {
-          seeFeed: offsetLimitPagination(),
+export const cache = new InMemoryCache({
+  typePolicies: {
+    Query: {
+      fields: {
+        // merge와 동일한 기능
+        seeFeed: offsetLimitPagination(),
           // merge 사용방법
           // seeFeed:{
           // existing은 기존 데이터, incomming은 fetchMore로 새로 추가된 데이터
@@ -61,9 +58,13 @@ const client = new ApolloClient({
           //     return [...existing, ...incomming]
           //   }
           // }
-        },
       },
     },
-  }),
+  },
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache,
 });
 export default client;
