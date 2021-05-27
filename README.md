@@ -208,3 +208,7 @@ https://github.com/localtunnel/localtunnel
 - 화면을 아래로 잡아당겼을때 새로고침되는 것을 말함
 - refetch
   이전에 불러온 쿼리를 새롭게 다시 불러오는 기능
+
+# 15.10 Infinite Scrolling part One
+
+- 무한스크롤링 사용법 (Feed의 onReached관련..)
