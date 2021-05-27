@@ -105,9 +105,13 @@ export default function CreateAccount({ navigation }) {
         ref={firstNameRef}
         placeholder="First Name"
         returnKeyType="next"
+        // return 위치에 있는 버튼을 클릭시 실행될 동작
         onSubmitEditing={() => onNext(lastNameRef)}
+        // 말 그대로 placeholder의 색
         placeholderTextColor={'rgba(255, 255, 255, 0.6)'}
         onChangeText={text => setValue('firstName', text)}
+        // 자동으로 대문자 만들어주는 기능 끄기
+        autoCapitalize={'none'}
       />
       <TextInput
         ref={lastNameRef}
@@ -116,6 +120,7 @@ export default function CreateAccount({ navigation }) {
         onSubmitEditing={() => onNext(usernameRef)}
         placeholderTextColor={'rgba(255, 255, 255, 0.6)'}
         onChangeText={text => setValue('lastName', text)}
+        autoCapitalize={'none'}
       />
       <TextInput
         ref={usernameRef}
@@ -125,6 +130,7 @@ export default function CreateAccount({ navigation }) {
         onSubmitEditing={() => onNext(emailRef)}
         placeholderTextColor={'rgba(255, 255, 255, 0.6)'}
         onChangeText={text => setValue('username', text)}
+        autoCapitalize={'none'}
       />
       <TextInput
         ref={emailRef}
@@ -135,6 +141,7 @@ export default function CreateAccount({ navigation }) {
         onSubmitEditing={() => onNext(passwordRef)}
         placeholderTextColor={'rgba(255, 255, 255, 0.6)'}
         onChangeText={text => setValue('email', text)}
+        autoCapitalize={'none'}
       />
       <TextInput
         ref={passwordRef}
