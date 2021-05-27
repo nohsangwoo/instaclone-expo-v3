@@ -45,6 +45,7 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
+// cache를 export 해주기 위한 작업
 export const cache = new InMemoryCache({
   typePolicies: {
     Query: {

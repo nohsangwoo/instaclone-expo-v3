@@ -17,6 +17,7 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const onFinish = () => setLoading(false);
   const isLoggedIn = useReactiveVar(isLoggedInVar);
+  
   const preloadAssets = () => {
     const fontsToLoad = [Ionicons.font];
     const fontPromises = fontsToLoad.map(font => Font.loadAsync(font));
@@ -25,6 +26,7 @@ export default function App() {
     return Promise.all([...fontPromises, ...imagePromises]);
   };
 
+  // 말그대로 앱이 실행? 작동하기전에 처리되는 부분
   const preload = async () => {
     const token = await AsyncStorage.getItem('token');
     if (token) {
@@ -32,6 +34,8 @@ export default function App() {
       tokenVar(token);
     }
     // persist적용법
+    // cache를 restore해주는 작업임
+    // 즉 cache를 AsyncStorage로 보내주겠다는 의미
     await persistCache({
       cache,
       storage: new AsyncStorageWrapper(AsyncStorage),
