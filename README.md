@@ -183,3 +183,7 @@ https://github.com/localtunnel/localtunnel
 # 15.3 Stack and Tabs part Two
 
 실제 작동하게 만들어줌
+
+# 15.4 Apollo Auth
+
+- navigation header에 이미지 삽입

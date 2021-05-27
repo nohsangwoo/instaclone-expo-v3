@@ -3,6 +3,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { COMMENT_FRAGMENT, PHOTO_FRAGMENT } from '../fragments';
 
+// seeFeed trigger생성
 const FEED_QUERY = gql`
   query seeFeed {
     seeFeed {
@@ -19,6 +20,7 @@ const FEED_QUERY = gql`
       isMine
     }
   }
+  # fragment사용법
   ${PHOTO_FRAGMENT}
   ${COMMENT_FRAGMENT}
 `;

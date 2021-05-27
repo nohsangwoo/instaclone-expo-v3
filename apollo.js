@@ -14,6 +14,12 @@ const TOKEN = 'token';
 
 // 기존 변수를 기록하기위한 작업
 export const logUserIn = async token => {
+  // 여러개의 변수를 asyncStorage에 한번에 저장하고 싶을때
+  // await AsyncStorage.multiSet([
+  //   ["token", token],
+  //   ["loggedIn", "yes"],
+  // ]);
+
   await AsyncStorage.setItem(TOKEN, token);
   isLoggedInVar(true);
   token(token);
