@@ -196,3 +196,9 @@ https://github.com/localtunnel/localtunnel
 # 15.6 Photo part One
 
 - component나누고 props전달 방법
+
+# 15.7 Photo part Two
+
+- getSize로 이미지의 실제 크기를 불러와 컨트롤 한다
+
+# 15.8 Photo part Three
