@@ -29,6 +29,7 @@ const FEED_QUERY = gql`
 
 export default function Feed() {
   // refetch: 이전에 불러온 쿼리를 새롭게 다시 불러오는 기능
+  // fetchMore: 말그대로 새로고침하지않고 추가로 더 불러오는 data
   const { data, loading, refetch, fetchMore } = useQuery(FEED_QUERY, {
     variables: {
       // 기본으로 skip할 값은 0 (backend설정이 offset을 기준으로 Skip하게 설계함)

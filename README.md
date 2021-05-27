@@ -212,3 +212,29 @@ https://github.com/localtunnel/localtunnel
 # 15.10 Infinite Scrolling part One
 
 - 무한스크롤링 사용법 (Feed의 onReached관련..)
+- fetchMore: 말그대로 새로고침하지않고 추가로 더 불러오는 data
+
+# 15.11 Infinite Scrolling part two
+
+- offsetLimitPagination? merge?
+- fetchMore로 추가 로드한 부분이 cache에 각각 따로 저장되는 현상을 방지하고
+  하나의 데이터로 합쳐지길 원할때
+
+```
+cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          seeFeed: offsetLimitPagination(),
+            // merge 사용방법
+          // seeFeed:{
+          // existing은 기존 데이터, incomming은 fetchMore로 새로 추가된 데이터
+          //   merge(existing = [], incomming = []){
+          //     return [...existing, ...incomming]
+          //   }
+          // }
+        },
+      },
+    },
+  }),
+```
