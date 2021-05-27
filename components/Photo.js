@@ -74,6 +74,7 @@ function Photo({ id, user, caption, file, isLiked, likes }) {
     } = result;
     if (ok) {
       const photoId = `Photo:${id}`;
+      // cache 업데이트 방법
       cache.modify({
         id: photoId,
         fields: {
