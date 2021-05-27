@@ -175,3 +175,11 @@ https://github.com/localtunnel/localtunnel
   https://github.com/react-native-async-storage/async-storage 참조
   너무 많이 쓰는 패키지라 공식문서에도 소개됨
   https://docs.expo.io/versions/latest/sdk/async-storage/
+
+# 15.3 Stack and Tabs part Owe
+
+- tab navigation 안에 stack navigation을 쌓고싶을때
+
+# 15.3 Stack and Tabs part Two
+
+실제 작동하게 만들어줌
