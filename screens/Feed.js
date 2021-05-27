@@ -28,6 +28,7 @@ const FEED_QUERY = gql`
 `;
 
 export default function Feed() {
+  // refetch: 이전에 불러온 쿼리를 새롭게 다시 불러오는 기능
   const { data, loading, refetch } = useQuery(FEED_QUERY);
 
   const renderPhoto = ({ item: photo }) => {
@@ -36,6 +37,7 @@ export default function Feed() {
 
   const refresh = async () => {
     setRefreshing(true);
+    // (FEED_QEURY를 다시 불러온다(새로고침))
     await refetch();
     setRefreshing(false);
   };

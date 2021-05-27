@@ -202,3 +202,9 @@ https://github.com/localtunnel/localtunnel
 - getSize로 이미지의 실제 크기를 불러와 컨트롤 한다
 
 # 15.8 Photo part Three
+
+# 15.9 Pull to Refresh(Feed.js)
+
+- 화면을 아래로 잡아당겼을때 새로고침되는 것을 말함
+- refetch
+  이전에 불러온 쿼리를 새롭게 다시 불러오는 기능
