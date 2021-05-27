@@ -187,3 +187,8 @@ https://github.com/localtunnel/localtunnel
 # 15.4 Apollo Auth
 
 - navigation header에 이미지 삽입
+- apollo setting
+
+# 15.5 FlatList
+
+화면에 나타나는 컴포넌트만 일단 렌더링하고 화면의 범위를 넘어서는 부분의 컴포넌트는 스크롤 하는경우에 추가로 렌더링 한다
