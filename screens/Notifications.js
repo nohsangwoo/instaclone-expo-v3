@@ -1,7 +1,12 @@
 import React from 'react';
 import { Text, View } from 'react-native';
+import { logUserOut } from '../apollo';
 
 export default function Notifications() {
+  const onClcikNoti = () => {
+    console.log('임시 로그아웃 기능');
+    logUserOut();
+  };
   return (
     <View
       style={{
@@ -11,7 +16,9 @@ export default function Notifications() {
         justifyContent: 'center',
       }}
     >
-      <Text style={{ color: 'white' }}>Notifications</Text>
+      <Text onPress={onClcikNoti} style={{ color: 'white' }}>
+        Notifications
+      </Text>
     </View>
   );
 }

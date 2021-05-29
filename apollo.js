@@ -23,7 +23,7 @@ export const logUserIn = async token => {
 
   await AsyncStorage.setItem(TOKEN, token);
   isLoggedInVar(true);
-  token(token);
+  tokenVar(token);
 };
 
 export const logUserOut = async () => {
@@ -52,13 +52,13 @@ export const cache = new InMemoryCache({
       fields: {
         // merge와 동일한 기능
         seeFeed: offsetLimitPagination(),
-          // merge 사용방법
-          // seeFeed:{
-          // existing은 기존 데이터, incomming은 fetchMore로 새로 추가된 데이터
-          //   merge(existing = [], incomming = []){
-          //     return [...existing, ...incomming]
-          //   }
-          // }
+        // merge 사용방법
+        // seeFeed:{
+        // existing은 기존 데이터, incomming은 fetchMore로 새로 추가된 데이터
+        //   merge(existing = [], incomming = []){
+        //     return [...existing, ...incomming]
+        //   }
+        // }
       },
     },
   },
