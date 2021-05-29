@@ -238,5 +238,12 @@ cache: new InMemoryCache({
     },
   }),
 ```
+
 # 15.12 Cache Persist
+
 persist 적용방법
+
+# 16.0 Likes part One
+
+- feed에서 like 클릭시 parameter를 같이보내기
+- 여기서도 새로고침기능 추가

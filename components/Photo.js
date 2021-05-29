@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components/native';
 import { Image, useWindowDimensions } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { gql, useMutation } from "@apollo/client";
+import { gql, useMutation } from '@apollo/client';
 
 // toggleLike trigger
 const TOGGLE_LIKE_MUTATION = gql`
@@ -124,7 +124,13 @@ function Photo({ id, user, caption, file, isLiked, likes }) {
             <Ionicons name="chatbubble-outline" color="white" size={22} />
           </Action>
         </Actions>
-        <TouchableOpacity onPress={() => navigation.navigate('Likes')}>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate('Likes', {
+              photoId: id,
+            })
+          }
+        >
           <Likes>{likes === 1 ? '1 like' : `${likes} likes`}</Likes>
         </TouchableOpacity>
         <Caption>
