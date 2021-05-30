@@ -267,3 +267,8 @@ persist 적용방법
 ```
 
 - and serialize의 bug 수정(app.js)
+
+# 16.2 Header Domination
+
+- navigation.setOptions
+  네비게이션과 관련된 옵션을 설정가능(타이틀이나, 색, 정렬 등등..)
