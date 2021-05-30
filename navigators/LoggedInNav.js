@@ -9,6 +9,7 @@ const Tabs = createBottomTabNavigator();
 
 export default function LoggedInNav() {
   const { data } = useMe();
+
   return (
     <Tabs.Navigator
       tabBarOptions={{
@@ -29,20 +30,9 @@ export default function LoggedInNav() {
           // tabNav의 ActiveTintColor색을 물려받음
           // focused는 현재 선택된 상태인가 아닌가를 알려줌
           // size는 font size
-          tabBarIcon: ({ focused, color, size }) =>
-            data?.me?.avatar ? (
-              <Image
-                source={{ uri: data.me.avatar }}
-                style={{
-                  height: 20,
-                  width: 20,
-                  borderRadius: 10,
-                  ...(focused && { borderColor: 'white', borderWidth: 1 }),
-                }}
-              />
-            ) : (
-              <TabIcon iconName={'person'} color={color} focused={focused} />
-            ),
+          tabBarIcon: ({ focused, color, size }) => (
+            <TabIcon iconName={'home'} color={color} focused={focused} />
+          ),
         }}
       >
         {/* stack navigation을 안에서 또 따로 구현하기위해 만들어진 컴포넌트 */}
@@ -80,9 +70,20 @@ export default function LoggedInNav() {
       <Tabs.Screen
         name="Me"
         options={{
-          tabBarIcon: ({ focused, color, size }) => (
-            <TabIcon iconName={'person'} color={color} focused={focused} />
-          ),
+          tabBarIcon: ({ focused, color, size }) =>
+            data?.me?.avatar ? (
+              <Image
+                source={{ uri: data.me.avatar }}
+                style={{
+                  height: 20,
+                  width: 20,
+                  borderRadius: 10,
+                  ...(focused && { borderColor: 'white', borderWidth: 1 }),
+                }}
+              />
+            ) : (
+              <TabIcon iconName={'person'} color={color} focused={focused} />
+            ),
         }}
       >
         {() => <SharedStackNav screenName="Me" />}

@@ -5,7 +5,7 @@ import useMe from '../hooks/useMe';
 export default function Me({ navigation }) {
   const { data } = useMe();
 
-  console.log(data.me.username, 'data');
+  // console.log(data.me.username, 'data');
 
   useEffect(() => {
     navigation.setOptions({
