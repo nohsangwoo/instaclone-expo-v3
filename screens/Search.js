@@ -1,13 +1,28 @@
+import { gql, useLazyQuery } from '@apollo/client';
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Text, TextInput, View } from 'react-native';
 import styled from 'styled-components/native';
 import DismissKeyboard from '../components/DismissKeyboard';
 
+// create searchPhotos trigger
+const SEARCH_PHOTOS = gql`
+  query searchPhotos($keyword: String!) {
+    searchPhotos(keyword: $keyword) {
+      id
+      file
+    }
+  }
+`;
+
 const Input = styled.TextInput``;
 
 export default function Search({ navigation }) {
   const { setValue, register } = useForm();
+  // 나중에 startQueryFn이 호출될때 쿼리문이 실행됨
+  // startQueryFn라는 이름의 동작 트리거를 생성
+  const [startQueryFn, { loading, data }] = useLazyQuery(SEARCH_PHOTOS);
+
   const SearchBox = () => (
     <TextInput
       style={{ backgroundColor: 'white' }}

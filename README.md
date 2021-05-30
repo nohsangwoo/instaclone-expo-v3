@@ -277,3 +277,9 @@ persist 적용방법
 
 - TouchableWithoutFeedback
   이부분을 클릭하면 키보드입력창이 비활성화 되게 설정
+
+# 16.4 Search part Two
+
+- useLazyQuery
+  보통 쿼리문은 hook을 생성과 동시에 실행되지만
+  LazyQuery의 경우 hook생성시 동작트리거를 또 만들어 해당 트리거가 호출되는 시점에서 query가 실행된다
