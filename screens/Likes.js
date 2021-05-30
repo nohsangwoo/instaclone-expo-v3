@@ -31,6 +31,17 @@ export default function Likes({ route }) {
   return (
     <ScreenLayout loading={loading}>
       <FlatList
+        // 아이템 사이에는 적용되지만 맨 위와 맨 아래에는 적용되지 않는 컴포넌트
+        // 희미한 seperator선을 만들기 위한 작업
+        ItemSeparatorComponent={() => (
+          <View
+            style={{
+              width: '100%',
+              height: 1,
+              backgroundColor: 'rgba(255, 255, 255, 0.2)',
+            }}
+          ></View>
+        )}
         refreshing={refreshing}
         onRefresh={onRefresh}
         data={data?.seePhotoLikes}

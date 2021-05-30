@@ -247,3 +247,23 @@ persist 적용방법
 
 - feed에서 like 클릭시 parameter를 같이보내기
 - 여기서도 새로고침기능 추가
+
+# 16.1 Likes part Two
+
+- ItemSeparatorComponent
+
+```
+ <FlatList
+  // 아이템 사이에는 적용되지만 맨 위와 맨 아래에는 적용되지 않는 컴포넌트
+  // 희미한 seperator선을 만들기 위한 작업
+  ItemSeparatorComponent={() => (
+    <View
+      style={{
+        width: '100%',
+        height: 1,
+        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+      }}
+    ></View>
+```
+
+- and serialize의 bug 수정(app.js)
