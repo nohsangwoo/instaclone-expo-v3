@@ -23,6 +23,7 @@ export default function Likes({ route }) {
     skip: !route?.params?.photoId,
   });
   const renderUser = ({ item: user }) => <UserRow {...user} />;
+
   const onRefresh = async () => {
     setRefreshing(true);
     await refetch();
