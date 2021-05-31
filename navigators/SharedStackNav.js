@@ -60,6 +60,7 @@ export default function SharedStackNav({ screenName }) {
         },
       }}
     >
+      {/* 일단 해당 tab에서 처음으로 렌더링 되는 component를 초기화 */}
       {chooseScreenAndRender(screenName)}
       {/* {screenName === 'Feed' ? (
         <Stack.Screen name={'Feed'} component={Feed} />

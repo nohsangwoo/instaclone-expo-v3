@@ -45,8 +45,10 @@ export default function TabsNav() {
         component={View}
         listeners={({ navigation }) => {
           return {
+            //   해당 네비 아이템을 클릭했을때 일어나는 이벤트
             tabPress: e => {
               e.preventDefault();
+              //   camera아이콘을 클릭하면 TabsNav를 감싸고있는 stack nav의 Upload component 로 이동한다
               navigation.navigate('Upload');
             },
           };

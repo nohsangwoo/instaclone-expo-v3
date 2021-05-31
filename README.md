@@ -291,4 +291,19 @@ persist 적용방법
 
 # comment 부분 작업 seeComments 작업은 끝냈고 create, delete 작업을 나중에 진행
 
+# 17.0 Modal Navigator
+
+- 기존 tab navigation을 stack navigation으로 또한번 감싸주는 작업
+  카메라를 선택시 stack으로 작업하고 싶어서 이런 작업을 진행
+  이때 camera가 나타나는 방식이 카드 형태가 아니라 모달 형태로 나타나게 설정
+- navigator의 route(props)는 navigation에 접근 가능
+
 # 17.1 Bottom Tabs Navigator
+
+- createMaterialTopTabNavigator
+  또다른 네비게이터종류
+  https://reactnavigation.org/docs/material-top-tab-navigator/ 참고
+
+# 17.2 Select Photo part One
+
+- navigation option설정
