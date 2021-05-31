@@ -1,5 +1,5 @@
 import { gql, useLazyQuery } from '@apollo/client';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import {
   ActivityIndicator,
@@ -42,6 +42,8 @@ const Input = styled.TextInput`
 `;
 
 export default function Search({ navigation }) {
+  const [forceUpdate, setForceUpdate] = useState(0);
+  const SearchInputRef = useRef();
   const numColumns = 4;
   // windows.innerWitdh 같은 느낌
   const { width } = useWindowDimensions();
@@ -60,6 +62,7 @@ export default function Search({ navigation }) {
 
   const SearchBox = () => (
     <Input
+      ref={SearchInputRef}
       width={width}
       placeholderTextColor="rgba(0, 0, 0, 0.8)"
       placeholder="Search photos"
@@ -71,6 +74,7 @@ export default function Search({ navigation }) {
       onSubmitEditing={handleSubmit(onValid)}
     />
   );
+
   useEffect(() => {
     navigation.setOptions({
       headerTitle: SearchBox,
@@ -79,10 +83,23 @@ export default function Search({ navigation }) {
       required: true,
       minLength: 3,
     });
+    setForceUpdate(prev => prev + 1);
   }, []);
 
+  useEffect(() => {
+    if (SearchInputRef.current) {
+      SearchInputRef.current.focus();
+    }
+  }, [forceUpdate]);
+
   const renderItem = ({ item: photo }) => (
-    <TouchableOpacity>
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate('Photo', {
+          photoId: photo.id,
+        })
+      }
+    >
       <Image
         source={{ uri: photo.file }}
         style={{ width: width / numColumns, height: 100 }}

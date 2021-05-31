@@ -58,6 +58,7 @@ const ExtraContainer = styled.View`
 `;
 
 function Photo({ id, user, caption, file, isLiked, likes }) {
+  // console.log('check', id, user, caption, file, isLiked, likes);
   const navigation = useNavigation();
   const { width, height } = useWindowDimensions();
   const [imageHeight, setImageHeight] = useState(height - 550);
@@ -162,6 +163,6 @@ Photo.propTypes = {
   file: PropTypes.string.isRequired,
   isLiked: PropTypes.bool.isRequired,
   likes: PropTypes.number.isRequired,
-  commentNumber: PropTypes.number.isRequired,
+  commentNumber: PropTypes.number,
 };
 export default Photo;
