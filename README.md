@@ -290,3 +290,5 @@ persist 적용방법
   반복되어 렌더링되는 배열의 column 갯 수
 
 # comment 부분 작업 seeComments 작업은 끝냈고 create, delete 작업을 나중에 진행
+
+# 17.1 Bottom Tabs Navigator

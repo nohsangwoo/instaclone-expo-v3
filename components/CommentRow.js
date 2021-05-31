@@ -43,7 +43,6 @@ const FollowBtnText = styled.Text`
 `;
 
 export default function CommentRow({ id, isMine, payload, user }) {
-  console.log('commentRosw', id, isMine, payload, user);
   const navigation = useNavigation();
   return (
     <Wrapper>
@@ -58,7 +57,7 @@ export default function CommentRow({ id, isMine, payload, user }) {
         <Avatar source={{ uri: user.avatar }} />
         <Username>{user.username}</Username>
       </Column>
-      <Comment>test commetns</Comment>
+      <Comment>{payload}</Comment>
       {/* {!isMe ? (
         <FollowBtn>
           <FollowBtnText>{isFollowing ? 'Unfollow' : 'Follow'}</FollowBtnText>
