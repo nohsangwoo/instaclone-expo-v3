@@ -283,3 +283,8 @@ persist 적용방법
 - useLazyQuery
   보통 쿼리문은 hook을 생성과 동시에 실행되지만
   LazyQuery의 경우 hook생성시 동작트리거를 또 만들어 해당 트리거가 호출되는 시점에서 query가 실행된다
+
+# 16.6 Search part Four
+
+- FlatList - numColumns
+  반복되어 렌더링되는 배열의 column 갯 수
