@@ -314,3 +314,7 @@ persist 적용방법
   https://docs.expo.io/versions/latest/sdk/media-library/ 참고
   - media-library사용법
     media-library를 불러오기위해선 권한을 부여받아야함 그 과정을 다룸
+
+# 17.4 Select Photo part Three
+
+FlatList 적용
