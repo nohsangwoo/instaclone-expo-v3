@@ -5,6 +5,7 @@ import { useState } from 'react/cjs/react.development';
 import { COMMENT_FRAGMENT, USER_FRAGMENT } from '../fragments';
 import ScreenLayout from '../components/ScreenLayout';
 import CommentRow from '../components/CommentRow';
+import { useNavigation } from '@react-navigation/native';
 
 const SEE_PHOTO_COMMENTS = gql`
   query seePhotoComments($id: Int!) {
@@ -16,6 +17,8 @@ const SEE_PHOTO_COMMENTS = gql`
 `;
 
 export default function Comments({ route }) {
+  const navigation = useNavigation();
+
   const [refreshing, setRefreshing] = useState(false);
 
   const { data, loading, refetch } = useQuery(SEE_PHOTO_COMMENTS, {
@@ -36,6 +39,16 @@ export default function Comments({ route }) {
     await refetch();
     setRefreshing(false);
   };
+  useEffect(() => {
+    navigation.setOptions({
+      title: 'ohohoh',
+      headerTitle: () => (
+        <View>
+          <Text style={{ color: 'white' }}>test</Text>
+        </View>
+      ),
+    });
+  }, []);
   return (
     <ScreenLayout loading={loading}>
       <FlatList
