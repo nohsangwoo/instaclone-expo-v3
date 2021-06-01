@@ -19,6 +19,7 @@ And it worked !
 
 - https://docs.expo.io/versions/latest/sdk/app-loading/
 - 내가 원할때까지 앱 로딩을 막아주는 기능
+  expo install expo-app-loading
 
 # 13.7 react navigation
 
@@ -317,4 +318,9 @@ persist 적용방법
 
 # 17.4 Select Photo part Three
 
-FlatList 적용
+- FlatList 적용해서 내 사진첩에 있는 사진 리스트 가져오고 미리보기 작동
+
+# 17.5 Select Photo part Four
+
+- camera - selectPhoto - headerRight를 커스터마이징
+- 사진첩에서 로드된 사진을 선택할때 선택된 사진은 표기됨

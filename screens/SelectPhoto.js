@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   useWindowDimensions,
 } from 'react-native';
+import { colors } from '../colors';
 
 const Container = styled.View`
   flex: 1;
@@ -31,7 +32,14 @@ const IconContainer = styled.View`
   right: 0px;
 `;
 
-export default function SelectPhoto() {
+const HeaderRightText = styled.Text`
+  color: ${colors.blue};
+  font-size: 16px;
+  font-weight: 600;
+  margin-right: 7px;
+`;
+
+export default function SelectPhoto({ navigation }) {
   const [ok, setOk] = useState(false);
   const [photos, setPhotos] = useState([]);
   const [chosenPhoto, setChosenPhoto] = useState('');
@@ -64,8 +72,22 @@ export default function SelectPhoto() {
     }
   };
 
+  // 오른쪽 header의 component
+  const HeaderRight = () => (
+    <TouchableOpacity>
+      <HeaderRightText>Next</HeaderRightText>
+    </TouchableOpacity>
+  );
+
   useEffect(() => {
     getPermissions();
+  }, []);
+
+  // 말그대로 네비게이션의 오른쪽 header를 커스터 마이징 해준다
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: HeaderRight,
+    });
   }, []);
 
   const numColumns = 4;
@@ -73,6 +95,8 @@ export default function SelectPhoto() {
   const choosePhoto = uri => {
     setChosenPhoto(uri);
   };
+
+  // 하단에 미리보기로 렌더링되는 사진 목록들
   const renderItem = ({ item: photo }) => (
     <ImageContainer onPress={() => choosePhoto(photo.uri)}>
       <Image
@@ -80,7 +104,13 @@ export default function SelectPhoto() {
         style={{ width: width / numColumns, height: 100 }}
       />
       <IconContainer>
-        <Ionicons name="checkmark-circle" size={18} color="white" />
+        <Ionicons
+          name="checkmark-circle"
+          size={18}
+          // 미리보기사진의 오른쪽 하단에 작은 체크아이콘이 있는데
+          // 해당 체크아이콘이 선택된 상태라면 파란색으로 변경됨
+          color={photo.uri === chosenPhoto ? colors.blue : 'white'}
+        />
       </IconContainer>
     </ImageContainer>
   );
@@ -88,6 +118,7 @@ export default function SelectPhoto() {
   return (
     <Container>
       <Top>
+        {/* 상단에 현재 선택된 사진이 크게 미리보기됨(초기 화면은 가장 첫번째 사진으로 초기화됨) */}
         {chosenPhoto !== '' ? (
           <Image
             source={{ uri: chosenPhoto }}
