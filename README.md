@@ -324,3 +324,14 @@ persist 적용방법
 
 - camera - selectPhoto - headerRight를 커스터마이징
 - 사진첩에서 로드된 사진을 선택할때 선택된 사진은 표기됨
+
+# 17.6 Take Photo part One
+
+- 사진 찍는 컴포넌트 구현 시작
+  https://docs.expo.io/versions/latest/sdk/camera/
+  expo install expo-camera
+  - 사진 찍는 기능은 시뮬레이터에서 작동안함 진짜 핸드폰에서 사용해야함
+
+# 17.6 Take Photo part One
+
+- 사진 찍기전 권한 요청하는 작업 구현
