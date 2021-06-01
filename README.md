@@ -354,3 +354,12 @@ persist 적용방법
 - 플래시 기능 켜기 끄기 기능 구현(사진 찍을때)
 - 뒤로가기 버튼 이아니라 stack navi 끄고 tab navi로 돌아가는 버튼 생성
 - 상단 스테이터스 바 숨기기(selectphoto and take photo)
+
+# 17.9 Take Photo part Four
+
+- expo-file-system
+- 사진 찍는 기능 추가(아직 시스템에 저장은 안됨)
+
+# expo camera
+
+https://docs.expo.io/versions/latest/sdk/camera/ 기능 참고

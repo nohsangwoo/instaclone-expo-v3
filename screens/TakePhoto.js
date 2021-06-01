@@ -1,5 +1,5 @@
 import { Camera } from 'expo-camera';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { StatusBar, TouchableOpacity } from 'react-native';
 import Slider from '@react-native-community/slider';
@@ -43,6 +43,8 @@ const CloseButton = styled.TouchableOpacity`
 `;
 
 export default function TakePhoto({ navigation }) {
+  const camera = useRef();
+  const [cameraReady, setCameraReady] = useState(false);
   const [ok, setOk] = useState(false);
   // Camera.Constants.Type.back: 후면 카메라 라는 뜻
   const [flashMode, setFlashMode] = useState(Camera.Constants.FlashMode.off);
@@ -78,6 +80,20 @@ export default function TakePhoto({ navigation }) {
       setFlashMode(Camera.Constants.FlashMode.off);
     }
   };
+  const onCameraReady = () => setCameraReady(true);
+
+  // 사진 찍는 기능
+  const takePhoto = async () => {
+    if (camera.current && cameraReady) {
+      // 사진찍는 기능에서 설정
+      const photo = await camera.current.takePictureAsync({
+        quality: 1,
+        // 사진의 정보를 포함한 메타데이터
+        exif: true,
+      });
+      console.log(photo);
+    }
+  };
   return (
     <Container>
       <StatusBar hidden={true} />
@@ -86,6 +102,8 @@ export default function TakePhoto({ navigation }) {
         style={{ flex: 1 }}
         zoom={zoom}
         flashMode={flashMode}
+        ref={camera}
+        onCameraReady={onCameraReady}
       >
         <CloseButton onPress={() => navigation.navigate('Tabs')}>
           <Ionicons name="close" color="white" size={30} />
@@ -103,7 +121,7 @@ export default function TakePhoto({ navigation }) {
           />
         </SliderContainer>
         <ButtonsContainer>
-          <TakePhotoBtn />
+          <TakePhotoBtn onPress={takePhoto} />
           <ActionsContainer>
             <TouchableOpacity
               onPress={onFlashChange}
