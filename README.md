@@ -162,6 +162,11 @@ navigation.navigate('LogIn', {
 https://ngrok.com/
 https://github.com/localtunnel/localtunnel
 
+- 1. https://ngrok.com/download
+     ./ngrok http 4000
+     or
+- 2. npx localtunnel --port 4000
+
 - ActivityIndicator
   로딩애니메이션
 
@@ -336,3 +341,10 @@ persist 적용방법
 
 - 사진 찍기전 권한 요청하는 작업 구현
 - 사진 찍는 기능 구현
+
+# 17.7 Take Photo part Two
+
+- 전/후면 카메라 전환기능 구현
+- 카메라 줌기능을 위해 슬라이더 라이브러리 사용
+  https://docs.expo.io/versions/latest/sdk/slider/
+  expo install @react-native-community/slider
