@@ -348,3 +348,9 @@ persist 적용방법
 - 카메라 줌기능을 위해 슬라이더 라이브러리 사용
   https://docs.expo.io/versions/latest/sdk/slider/
   expo install @react-native-community/slider
+
+# 17.8 Take Photo part Three
+
+- 플래시 기능 켜기 끄기 기능 구현(사진 찍을때)
+- 뒤로가기 버튼 이아니라 stack navi 끄고 tab navi로 돌아가는 버튼 생성
+- 상단 스테이터스 바 숨기기(selectphoto and take photo)

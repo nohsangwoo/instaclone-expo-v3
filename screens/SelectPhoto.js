@@ -5,6 +5,7 @@ import styled from 'styled-components/native';
 import {
   FlatList,
   Image,
+  StatusBar,
   TouchableOpacity,
   useWindowDimensions,
 } from 'react-native';
@@ -118,6 +119,8 @@ export default function SelectPhoto({ navigation }) {
   return (
     <Container>
       <Top>
+        <StatusBar />
+
         {/* 상단에 현재 선택된 사진이 크게 미리보기됨(초기 화면은 가장 첫번째 사진으로 초기화됨) */}
         {chosenPhoto !== '' ? (
           <Image
