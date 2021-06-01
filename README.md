@@ -363,3 +363,8 @@ persist 적용방법
 # expo camera
 
 https://docs.expo.io/versions/latest/sdk/camera/ 기능 참고
+
+# 17.10 Take Photo part Five
+
+- photo tab 클릭시 사진찍기 기능이 먼저나오게 수정
+- 사진을 찍고나서 1.취소 2.업로드 3.시스템에 저장후 업로드 선택하는 메뉴 추가
