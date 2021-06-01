@@ -110,6 +110,8 @@ export default function TakePhoto({ navigation }) {
   return (
     <Container>
       <StatusBar hidden={true} />
+      {/* 사진을 찍지 않은상태라면(takenPhoto에 사진 정보가 없다면)
+      카메라 기능이 동작함 */}
       {takenPhoto === '' ? (
         <Camera
           type={cameraType}
@@ -124,8 +126,11 @@ export default function TakePhoto({ navigation }) {
           </CloseButton>
         </Camera>
       ) : (
+        // 사진을 찍은상태라면(takenPhoto에 저장된 사진 정보가 있다면)
+        // 해당 사진을 이미지화하여 화면에 고정(카메라 off)
         <Image source={{ uri: takenPhoto }} style={{ flex: 1 }} />
       )}
+      {/* 사진정보가 없다면 카메라 옵션기능을 표시 */}
       {takenPhoto === '' ? (
         <Actions>
           <SliderContainer>
@@ -174,6 +179,7 @@ export default function TakePhoto({ navigation }) {
           </ButtonsContainer>
         </Actions>
       ) : (
+        // 사진정보가 있다면 해당 사진을 찍은후 선택 가능한 분기점을 생성
         <Actions>
           <PhotoAction onPress={onDismiss}>
             <PhotoActionText>Dismiss</PhotoActionText>
