@@ -26,6 +26,7 @@ const TakePhotoBtn = styled.TouchableOpacity`
 
 export default function TakePhoto() {
   const [ok, setOk] = useState(false);
+  // Camera.Constants.Type.back: 후면 카메라 라는 뜻
   const [cameraType, setCameraType] = useState(Camera.Constants.Type.back);
 
   // 카메라를 사용하기위한 권한 요청

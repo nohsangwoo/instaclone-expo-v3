@@ -335,3 +335,4 @@ persist 적용방법
 # 17.6 Take Photo part One
 
 - 사진 찍기전 권한 요청하는 작업 구현
+- 사진 찍는 기능 구현
