@@ -33,7 +33,7 @@ export const logUserOut = async () => {
 };
 
 const httpLink = createHttpLink({
-  uri: 'https://polite-dingo-35.loca.lt/graphql',
+  uri: 'https://selfish-horse-43.loca.lt/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
