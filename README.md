@@ -373,3 +373,8 @@ https://docs.expo.io/versions/latest/sdk/camera/ 기능 참고
 
 - 업로드를 위한 폼 정리
 - alert사용방법
+
+# 17.12 Upload Screen part One
+
+- 카메라 탭 순서 다시변경 (사진 선택창 먼저 뜨고 그다음슬라이드가 카메라로 사진찍기 창)
+- 사진 선택창에서 사진 선택 후 next 버튼 누르면 uploadform으로 넘어가게 설정

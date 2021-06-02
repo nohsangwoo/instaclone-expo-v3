@@ -75,7 +75,13 @@ export default function SelectPhoto({ navigation }) {
 
   // 오른쪽 header의 component
   const HeaderRight = () => (
-    <TouchableOpacity>
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate('UploadForm', {
+          file: chosenPhoto,
+        })
+      }
+    >
       <HeaderRightText>Next</HeaderRightText>
     </TouchableOpacity>
   );
@@ -119,8 +125,7 @@ export default function SelectPhoto({ navigation }) {
   return (
     <Container>
       <Top>
-        <StatusBar />
-
+        <StatusBar hidden={false} />
         {/* 상단에 현재 선택된 사진이 크게 미리보기됨(초기 화면은 가장 첫번째 사진으로 초기화됨) */}
         {chosenPhoto !== '' ? (
           <Image

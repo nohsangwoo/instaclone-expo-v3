@@ -5,6 +5,7 @@ import { Alert, Image, StatusBar, Text, TouchableOpacity } from 'react-native';
 import Slider from '@react-native-community/slider';
 import styled from 'styled-components/native';
 import * as MediaLibrary from 'expo-media-library';
+import { useIsFocused } from '@react-navigation/core';
 
 const Container = styled.View`
   flex: 1;
@@ -101,7 +102,9 @@ export default function TakePhoto({ navigation }) {
     if (save) {
       await MediaLibrary.saveToLibraryAsync(takenPhoto);
     }
-    console.log('Will upload', takenPhoto);
+    navigation.navigate('UploadForm', {
+      file: takenPhoto,
+    });
   };
 
   // 업로드 기능
@@ -138,9 +141,11 @@ export default function TakePhoto({ navigation }) {
     }
   };
   const onDismiss = () => setTakenPhoto('');
+  const isFocused = useIsFocused();
+
   return (
     <Container>
-      <StatusBar hidden={true} />
+      {isFocused ? <StatusBar hidden={true} /> : null}
       {/* 사진을 찍지 않은상태라면(takenPhoto에 사진 정보가 없다면)
       카메라 기능이 동작함 */}
       {takenPhoto === '' ? (
