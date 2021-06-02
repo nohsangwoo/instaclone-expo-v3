@@ -44,8 +44,34 @@ const HeaderRightText = styled.Text`
 `;
 
 export default function UploadForm({ route, navigation }) {
-  const [uploadPhotoMutation, { loading, error }] = useMutation(
-    UPLOAD_PHOTO_MUTATION
+  // cache: 기존에 프론트 캐시에 저장된 값들
+  // result: mutation 실행후 반환 받은 값
+  const updateUploadPhoto = (cache, result) => {
+    const {
+      data: { uploadPhoto },
+    } = result;
+    if (uploadPhoto.id) {
+      cache.modify({
+        //   웹처럼 쿼리를 특정하는 id를 따로 지정하지 않고 ROOT_QEURY로 퉁친다
+        // 모든 쿼리결과가 ROOT_QUERY에 저장됨
+        id: 'ROOT_QUERY',
+        // modify하려는 object의 field
+        // 웹에선 특정 값을 찾아서 덮어씌웠지만
+        // 앱에선 쿼리자체를 덮어 씌움
+        // 여기서 uploadPhoto는 Photo
+        fields: {
+          seeFeed(prev) {
+            return [uploadPhoto, ...prev];
+          },
+        },
+      });
+      navigation.navigate('Tabs');
+    }
+  };
+
+  const [uploadPhotoMutation, { loading }] = useMutation(
+    UPLOAD_PHOTO_MUTATION,
+    { update: updateUploadPhoto }
   );
 
   const TextInputRef = useRef();
@@ -90,7 +116,6 @@ export default function UploadForm({ route, navigation }) {
     TextInputRef.current.focus();
   }, []);
 
-  console.log(error);
   return (
     //   dismisskeyboard영역을 터치하면 키보드가 사라짐
     <DismissKeyboard>

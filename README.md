@@ -398,3 +398,12 @@ https://docs.expo.io/versions/latest/sdk/camera/ 기능 참고
 
 - onError
   에러를 감지할수있음
+
+# 17.15 Upload Screen part Four
+
+- createUploadLink를 http링크 대신사용해서 json파일로만 통신하는게 아니라 파일도 업로드 할수있게 해줌
+  https://www.apollographql.com/docs/apollo-server/data/file-uploads/
+- 사진 업로드후 캐쉬업데이트
+- 앱에서 cache.modify하는 법
+  // 웹처럼 쿼리를 특정하는 id를 따로 지정하지 않고 ROOT_QEURY로 퉁친다
+  // 모든 쿼리결과가 ROOT_QUERY에 저장됨

@@ -8,6 +8,7 @@ import { onError } from '@apollo/client/link/error';
 import { setContext } from '@apollo/client/link/context';
 import { offsetLimitPagination } from '@apollo/client/utilities';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { createUploadLink } from 'apollo-upload-client';
 
 export const isLoggedInVar = makeVar(false);
 export const tokenVar = makeVar('');
@@ -32,8 +33,9 @@ export const logUserOut = async () => {
   isLoggedInVar(false);
   tokenVar(null);
 };
-
-const httpLink = createHttpLink({
+// http대신 createUploadLink를 사용하여 json통신만 하는게 아니라
+// 더불어 파일도 같이 보낼수있게 해준다
+const uploadHttpLink = createUploadLink({
   uri: 'https://dangerous-elephant-91.loca.lt/graphql',
 });
 
@@ -76,7 +78,7 @@ export const cache = new InMemoryCache({
 
 const client = new ApolloClient({
   // httplink가 항상 마지막에 연결돼야함
-  link: authLink.concat(onErrorLink).concat(httpLink),
+  link: authLink.concat(onErrorLink).concat(uploadHttpLink),
   cache,
 });
 export default client;
