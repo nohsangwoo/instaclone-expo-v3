@@ -434,3 +434,7 @@ https://docs.expo.io/versions/latest/sdk/camera/ 기능 참고
 - 대화방(room) 꾸미기
 - KeyboardAvoidingView
   키보드가 나타날때 화면이 같이 올라가서 키보드가 화면을 가려버리지 않도록 해줌
+
+# 18.5 Room Screen part Three
+
+- 간단한 css정리
