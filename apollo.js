@@ -4,6 +4,7 @@ import {
   InMemoryCache,
   makeVar,
 } from '@apollo/client';
+import { onError } from '@apollo/client/link/error';
 import { setContext } from '@apollo/client/link/context';
 import { offsetLimitPagination } from '@apollo/client/utilities';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -33,7 +34,7 @@ export const logUserOut = async () => {
 };
 
 const httpLink = createHttpLink({
-  uri: 'https://purple-wolverine-82.loca.lt/graphql',
+  uri: 'https://dangerous-elephant-91.loca.lt/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -43,6 +44,15 @@ const authLink = setContext((_, { headers }) => {
       token: tokenVar(),
     },
   };
+});
+
+const onErrorLink = onError(({ graphQLErrors, networkError }) => {
+  if (graphQLErrors) {
+    console.log(`GraphQL Error`, graphQLErrors);
+  }
+  if (networkError) {
+    console.log('Network Error', networkError);
+  }
 });
 
 // cache를 export 해주기 위한 작업
@@ -65,7 +75,8 @@ export const cache = new InMemoryCache({
 });
 
 const client = new ApolloClient({
-  link: authLink.concat(httpLink),
+  // httplink가 항상 마지막에 연결돼야함
+  link: authLink.concat(onErrorLink).concat(httpLink),
   cache,
 });
 export default client;

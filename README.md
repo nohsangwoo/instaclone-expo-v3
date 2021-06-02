@@ -384,3 +384,17 @@ https://docs.expo.io/versions/latest/sdk/camera/ 기능 참고
 - uploadForm 설정
 - 사진 업로드 직전 caption입력과 보낼 form들 설정
 - send버튼을 누르면 headerLeft가 사라지게 만들고 로딩표시를 보여주는 기능 구현
+
+# 17.14 Upload Screen part Three
+
+# 17.14 Upload Screen part Three
+
+사진을 업로드 하는 기능 추가(백엔드단에서 aws로 업데이트함)
+
+1. 프론트엔드에서 찍은 사진을 일단 백엔드로 전송
+2. 백엔드에서 전송받은 파일을 aws s3에 업데이트후 업로드된 주소를 DB에 저장
+
+- https://www.npmjs.com/package/apollo-upload-client
+
+- onError
+  에러를 감지할수있음
