@@ -428,3 +428,9 @@ https://docs.expo.io/versions/latest/sdk/camera/ 기능 참고
 # 18.3 Room Screen part One
 
 - 컴포넌트 모듈화 및 대화방 입장 기능 구현
+
+# 18.4 Room Screen part Two
+
+- 대화방(room) 꾸미기
+- KeyboardAvoidingView
+  키보드가 나타날때 화면이 같이 올라가서 키보드가 화면을 가려버리지 않도록 해줌
