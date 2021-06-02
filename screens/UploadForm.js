@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { ActivityIndicator, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -32,6 +32,7 @@ const HeaderRightText = styled.Text`
 `;
 
 export default function UploadForm({ route, navigation }) {
+  const TextInputRef = useRef();
   const HeaderRight = () => (
     <TouchableOpacity
       onPress={() =>
@@ -56,6 +57,9 @@ export default function UploadForm({ route, navigation }) {
       headerLeft: () => null,
     });
   }, []);
+  useEffect(() => {
+    TextInputRef.current.focus();
+  }, []);
   const onValid = ({ caption }) => {};
   return (
     //   dismisskeyboard영역을 터치하면 키보드가 사라짐
@@ -65,6 +69,7 @@ export default function UploadForm({ route, navigation }) {
         <Photo resizeMode="contain" source={{ uri: route.params.file }} />
         <CaptionContainer>
           <Caption
+            ref={TextInputRef}
             returnKeyType="done"
             placeholder="Write a caption..."
             placeholderTextColor="rgba(0, 0, 0, 0.5)"

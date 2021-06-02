@@ -382,3 +382,5 @@ https://docs.expo.io/versions/latest/sdk/camera/ 기능 참고
 # 17.13 Upload Screen part Two
 
 - uploadForm 설정
+- 사진 업로드 직전 caption입력과 보낼 form들 설정
+- send버튼을 누르면 headerLeft가 사라지게 만들고 로딩표시를 보여주는 기능 구현
