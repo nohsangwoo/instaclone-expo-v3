@@ -413,3 +413,8 @@ https://docs.expo.io/versions/latest/sdk/camera/ 기능 참고
 # 18.0 Messages Navigator
 
 - DM 기본 폼 생성(feed에 DM screen으로 갈수있는 버튼 생성)
+
+# 18.1 Rooms Screen part One
+
+- DM페이지로 들어가면 seeRooms쿼리가 실행하고 나와 대화를 진행중이거나 나에게 메시지를 보냈거나 내가 메시지를 보낸 방이 나열된다
+- 또한 안읽은 메시지가 있다면 몇개의 메시지가 있는지 카운트 해준다
