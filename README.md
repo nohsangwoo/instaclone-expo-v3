@@ -409,3 +409,7 @@ https://docs.expo.io/versions/latest/sdk/camera/ 기능 참고
   // 모든 쿼리결과가 ROOT_QUERY에 저장됨
 
 # npm i react-native-uuid
+
+# 18.0 Messages Navigator
+
+- DM 기본 폼 생성(feed에 DM screen으로 갈수있는 버튼 생성)

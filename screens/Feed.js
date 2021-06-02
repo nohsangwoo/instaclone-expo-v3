@@ -1,9 +1,10 @@
 import { gql, useQuery } from '@apollo/client';
-import React, { useState } from 'react';
-import { FlatList, Text, View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { FlatList, TouchableOpacity, View } from 'react-native';
 import Photo from '../components/Photo';
 import ScreenLayout from '../components/ScreenLayout';
 import { COMMENT_FRAGMENT, PHOTO_FRAGMENT } from '../fragments';
+import { Ionicons } from '@expo/vector-icons';
 
 // seeFeed trigger생성
 const FEED_QUERY = gql`
@@ -28,7 +29,7 @@ const FEED_QUERY = gql`
   ${COMMENT_FRAGMENT}
 `;
 
-export default function Feed() {
+export default function Feed({ navigation }) {
   // refetch: 이전에 불러온 쿼리를 새롭게 다시 불러오는 기능
   // fetchMore: 말그대로 새로고침하지않고 추가로 더 불러오는 data
   const { data, loading, refetch, fetchMore } = useQuery(FEED_QUERY, {
@@ -49,6 +50,22 @@ export default function Feed() {
     setRefreshing(false);
   };
   const [refreshing, setRefreshing] = useState(false);
+
+  const MessagesButton = () => (
+    <TouchableOpacity
+      style={{ marginRight: 25 }}
+      onPress={() => navigation.navigate('Messages')}
+    >
+      <Ionicons name="paper-plane" color="white" size={20} />
+    </TouchableOpacity>
+  );
+
+  // header오른쪽에 버튼을 DM확인하는 화면으로 이동하는 버튼 생성
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: MessagesButton,
+    });
+  }, []);
 
   return (
     <ScreenLayout loading={loading}>
