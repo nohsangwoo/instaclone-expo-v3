@@ -1,10 +1,11 @@
 import { gql, useQuery } from '@apollo/client';
 import React from 'react';
-
-import { FlatList, Text, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 import styled from 'styled-components/native';
+import RoomItem from '../components/rooms/RoomItem';
 import ScreenLayout from '../components/ScreenLayout';
 import { ROOM_FRAGMENT } from '../fragments';
+import useMe from '../hooks/useMe';
 
 const SEE_ROOMS_QUERY = gql`
   query seeRooms {
@@ -15,28 +16,24 @@ const SEE_ROOMS_QUERY = gql`
   ${ROOM_FRAGMENT}
 `;
 
-const RoomContainer = styled.View`
-  background-color: black;
-`;
-const RoomText = styled.Text`
-  color: white;
-`;
-
 export default function Rooms() {
   const { data, loading } = useQuery(SEE_ROOMS_QUERY);
-  const renderItem = ({ item: room }) => (
-    <RoomContainer>
-      <RoomText>
-        {room.unreadTotal === '0'
-          ? 'Name of the other person'
-          : `${room.unreadTotal} messages.`}
-      </RoomText>
-    </RoomContainer>
-  );
 
+  const renderItem = ({ item: room }) => <RoomItem {...room} />;
   return (
     <ScreenLayout loading={loading}>
       <FlatList
+        //   사이에 존재하는 컴포넌트에만 적용되는 내용
+        ItemSeparatorComponent={
+          <View
+            style={{
+              width: '100%',
+              height: 1,
+              backgroundColor: 'rgba(255, 255, 255, 0.2)',
+            }}
+          ></View>
+        }
+        style={{ width: '100%' }}
         data={data?.seeRooms}
         keyExtractor={room => '' + room.id}
         renderItem={renderItem}
