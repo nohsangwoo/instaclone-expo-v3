@@ -36,7 +36,8 @@ export const logUserOut = async () => {
 // http대신 createUploadLink를 사용하여 json통신만 하는게 아니라
 // 더불어 파일도 같이 보낼수있게 해준다
 const uploadHttpLink = createUploadLink({
-  uri: 'https://dangerous-elephant-91.loca.lt/graphql',
+  // uri: 'https://dangerous-elephant-91.loca.lt/graphql',
+  uri: 'http://localhost:4000/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {

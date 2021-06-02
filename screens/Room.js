@@ -6,6 +6,7 @@ import styled from 'styled-components/native';
 
 const MessageContainer = styled.View`
   padding: 0px 10px;
+  /* 로그인한 사용자라면 왼쪽으로 상대방이라면 오른쪽에 표시된다 */
   flex-direction: ${props => (props.outGoing ? 'row-reverse' : 'row')};
   align-items: flex-end;
 `;
