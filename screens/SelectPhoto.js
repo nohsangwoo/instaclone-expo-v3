@@ -10,6 +10,7 @@ import {
   useWindowDimensions,
 } from 'react-native';
 import { colors } from '../colors';
+import uuid from 'react-native-uuid';
 
 const Container = styled.View`
   flex: 1;
@@ -44,6 +45,7 @@ export default function SelectPhoto({ navigation }) {
   const [ok, setOk] = useState(false);
   const [photos, setPhotos] = useState([]);
   const [chosenPhoto, setChosenPhoto] = useState('');
+  const [chosenPhotoFileName, setChosenPhotoFileName] = useState('');
 
   //   접근권한이 수락되면 photo를 불러온다
   const getPhotos = async () => {
@@ -79,6 +81,7 @@ export default function SelectPhoto({ navigation }) {
       onPress={() =>
         navigation.navigate('UploadForm', {
           file: chosenPhoto,
+          uuidFilename: chosenPhotoFileName,
         })
       }
     >
@@ -99,13 +102,21 @@ export default function SelectPhoto({ navigation }) {
 
   const numColumns = 4;
   const { width } = useWindowDimensions();
-  const choosePhoto = uri => {
+  const choosePhoto = (uri, fileName) => {
+    const fileNameWithUUID = uuid.v4() + fileName;
+    // console.log('uuid', fileNameWithUUID); // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'
     setChosenPhoto(uri);
+    setChosenPhotoFileName(fileNameWithUUID);
   };
 
   // 하단에 미리보기로 렌더링되는 사진 목록들
   const renderItem = ({ item: photo }) => (
-    <ImageContainer onPress={() => choosePhoto(photo.uri)}>
+    <ImageContainer
+      onPress={() => {
+        // console.log(photo);
+        return choosePhoto(photo.uri, photo.filename);
+      }}
+    >
       <Image
         source={{ uri: photo.uri }}
         style={{ width: width / numColumns, height: 100 }}

@@ -35,6 +35,7 @@ export default function Login({ route: params }) {
       login: { ok, token },
     } = data;
     if (ok) {
+      // console.log('login token', token);
       await logUserIn(token);
     }
   };
