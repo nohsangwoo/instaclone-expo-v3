@@ -438,3 +438,7 @@ https://docs.expo.io/versions/latest/sdk/camera/ 기능 참고
 # 18.5 Room Screen part Three
 
 - 간단한 css정리
+
+# 18.6 Room Screen part Four
+
+- sendMessageMutation 구현 및 캐시 업데이트
