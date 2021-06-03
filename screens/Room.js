@@ -181,7 +181,7 @@ export default function Room({ route, navigation }) {
 
     if (message.id) {
       // 캐쉬에 덮어씌우는 작업이 완료되면 해당 데이터들을 반환한다.
-      const messageFragment = client.cache.writeFragment({
+      const incomingMessage = client.cache.writeFragment({
         // 어디에 덮어씌울지 대상을 지정한후(Message)
         fragment: gql`
           fragment NewMessage on Message {
@@ -204,7 +204,14 @@ export default function Room({ route, navigation }) {
         id: `Room:${route.params.id}`,
         fields: {
           messages(prev) {
-            return [...prev, messageFragment];
+            // 새로받은 메시지가 previous value에 이미 존재하면 그냥 previous 메시지를 반환한다.
+            const existingMessage = prev.find(
+              aMessage => aMessage.__ref === incomingMessage.__ref
+            );
+            if (existingMessage) {
+              return prev;
+            }
+            return [...prev, incomingMessage];
           },
         },
       });

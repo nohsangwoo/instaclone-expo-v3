@@ -470,3 +470,9 @@ https://docs.expo.io/versions/latest/sdk/camera/ 기능 참고
 # 18.11 Subscriptions part Three
 
 - subscribeToMore이 실행될때 캐시 업데이트 구현
+- 메시지가 두번보내지는 버그가 있음
+
+# 18.12 Subscriptions part Four
+
+- 메시지 버그 수정
+- 새로받은 메시지가 previous value에 이미 존재하면 업데이트 하지않고 그냥 이전의 값들을 반환한다.
