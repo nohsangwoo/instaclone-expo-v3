@@ -442,3 +442,8 @@ https://docs.expo.io/versions/latest/sdk/camera/ 기능 참고
 # 18.6 Room Screen part Four
 
 - sendMessageMutation 구현 및 캐시 업데이트
+
+# 18.7 Room Screen part Five
+
+- cache를 가지고 장난 치고싶다면 쿼리를 불러올때 항상 id를 같이 불러오면 아폴로가 인식해서 캐쉬에 일단 자동으로 추가는 해준다
+- 따라서 쿼리를 불러올때 항상 해당 쿼리의 id를 쓰지 않더라도 그냥 불러오기

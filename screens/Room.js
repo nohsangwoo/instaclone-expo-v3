@@ -1,5 +1,5 @@
 import { gql, useMutation, useQuery } from '@apollo/client';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { FlatList, KeyboardAvoidingView, View } from 'react-native';
 import ScreenLayout from '../components/ScreenLayout';
 import styled from 'styled-components/native';
@@ -53,6 +53,7 @@ const TextInput = styled.TextInput`
 const ROOM_QUERY = gql`
   query seeRoom($id: Int!) {
     seeRoom(id: $id) {
+      id
       messages {
         id
         payload
@@ -67,8 +68,9 @@ const ROOM_QUERY = gql`
 `;
 
 export default function Room({ route, navigation }) {
+  const messageInputRef = useRef();
   const { data: meData } = useMe();
-  const { register, setValue, handleSubmit, getValues } = useForm();
+  const { register, setValue, handleSubmit, getValues, watch } = useForm();
   const updateSendMessage = (cache, result) => {
     const {
       data: {
@@ -81,6 +83,9 @@ export default function Room({ route, navigation }) {
     // 두개다 존재한다면 진행한다.
     if (ok && meData) {
       const { message } = getValues();
+      //   여기까지 왔다면 messagemutation은 일단 성공했다는 의미니깐 form의 message text input값을 비워준다
+      setValue('message', '');
+      messageInputRef.current.focus();
 
       // cache에 덮어씌울 메시지 오브젝트를 생성
       const messageObj = {
@@ -113,7 +118,7 @@ export default function Room({ route, navigation }) {
         id: `Room:${route.params.id}`,
         fields: {
           messages(prev) {
-            return [messageFragment, ...prev];
+            return [...prev, messageFragment];
           },
         },
       });
@@ -179,13 +184,16 @@ export default function Room({ route, navigation }) {
           // inverted옵션으로 맨 아래가 가장 최신의 데이터가 오도록 만듬
           // 채팅에선 맨 아래 텍스트가 가장 최신 메시지로 로드함
           // inverted
-          style={{ width: '100%', paddingTop: 10 }}
+          style={{ width: '100%', paddingVertical: 10 }}
           ItemSeparatorComponent={() => <View style={{ height: 20 }}></View>}
           data={data?.seeRoom?.messages}
           keyExtractor={message => '' + message.id}
           renderItem={renderItem}
         />
         <TextInput
+          ref={messageInputRef}
+          // 자동 대문자변환 방지
+          autoCapitalize="none"
           placeholderTextColor="rgba(255, 255, 255, 0.5)"
           placeholder="Write a message..."
           //   for android
@@ -196,6 +204,8 @@ export default function Room({ route, navigation }) {
           onChangeText={text => setValue('message', text)}
           //   즉 return 위치의 버튼을 눌렀을때(오른쪽하단의 submit버튼 이름이 뭐든) 작동하는 함수 커스터마이징
           onSubmitEditing={handleSubmit(onValid)}
+          //   message input의 value를 컨트롤 하기위한 설정(setValue등을 이용한...)
+          value={watch('message')}
         />
       </ScreenLayout>
     </KeyboardAvoidingView>
