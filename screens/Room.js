@@ -4,6 +4,7 @@ import { FlatList, KeyboardAvoidingView, View } from 'react-native';
 import ScreenLayout from '../components/ScreenLayout';
 import styled from 'styled-components/native';
 import { useForm } from 'react-hook-form';
+import { Ionicons } from '@expo/vector-icons';
 import useMe from '../hooks/useMe';
 
 const SEND_MESSAGE_MUTATION = gql`
@@ -41,14 +42,23 @@ const Message = styled.Text`
 `;
 
 const TextInput = styled.TextInput`
-  margin-bottom: 50px;
-  margin-top: 25px;
-  width: 95%;
   border: 1px solid rgba(255, 255, 255, 0.5);
   padding: 10px 20px;
   color: white;
   border-radius: 1000px;
+  width: 90%;
+  margin-right: 10px;
 `;
+
+const InputContainer = styled.View`
+  width: 95%;
+  margin-bottom: 50px;
+  margin-top: 25px;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const SendButton = styled.TouchableOpacity``;
 
 const ROOM_QUERY = gql`
   query seeRoom($id: Int!) {
@@ -171,6 +181,11 @@ export default function Room({ route, navigation }) {
     </MessageContainer>
   );
 
+  //   처음엔 값이 없다가 나중에 값이 들어오는 경우에 이렇게 해결함
+  // 값이 없을땐 빈배열을 spread해주고 값이 있을땐 해당값을 spread해줌
+  const messages = [...(data?.seeRoom?.messages ?? [])];
+  messages.reverse();
+
   return (
     //   키보드가 나타날때 화면이 같이 올라가서 키보드가 화면을 가려버리지 않도록 해줌
     <KeyboardAvoidingView
@@ -183,30 +198,42 @@ export default function Room({ route, navigation }) {
         <FlatList
           // inverted옵션으로 맨 아래가 가장 최신의 데이터가 오도록 만듬
           // 채팅에선 맨 아래 텍스트가 가장 최신 메시지로 로드함
-          // inverted
-          style={{ width: '100%', paddingVertical: 10 }}
+          inverted
+          style={{ width: '100%', marginVertical: 10 }}
           ItemSeparatorComponent={() => <View style={{ height: 20 }}></View>}
-          data={data?.seeRoom?.messages}
+          data={messages}
+          showsVerticalScrollIndicator={false}
           keyExtractor={message => '' + message.id}
           renderItem={renderItem}
         />
-        <TextInput
-          ref={messageInputRef}
-          // 자동 대문자변환 방지
-          autoCapitalize="none"
-          placeholderTextColor="rgba(255, 255, 255, 0.5)"
-          placeholder="Write a message..."
-          //   for android
-          returnKeyLabel="Send Message"
-          //for ios
-          returnKeyType="send"
-          //  input창에 text를 입력할때마나 message에 해당 입력된 값을 실시간으로 저장해줌
-          onChangeText={text => setValue('message', text)}
-          //   즉 return 위치의 버튼을 눌렀을때(오른쪽하단의 submit버튼 이름이 뭐든) 작동하는 함수 커스터마이징
-          onSubmitEditing={handleSubmit(onValid)}
-          //   message input의 value를 컨트롤 하기위한 설정(setValue등을 이용한...)
-          value={watch('message')}
-        />
+        <InputContainer>
+          <TextInput
+            ref={messageInputRef}
+            // 자동 대문자변환 방지
+            autoCapitalize="none"
+            placeholderTextColor="rgba(255, 255, 255, 0.5)"
+            placeholder="Write a message..."
+            returnKeyLabel="Send Message"
+            returnKeyType="send"
+            onChangeText={text => setValue('message', text)}
+            onSubmitEditing={handleSubmit(onValid)}
+            value={watch('message')}
+          />
+          <SendButton
+            onPress={handleSubmit(onValid)}
+            disabled={!Boolean(watch('message'))}
+          >
+            <Ionicons
+              name="send"
+              color={
+                !Boolean(watch('message'))
+                  ? 'rgba(255, 255, 255, 0.5)'
+                  : 'white'
+              }
+              size={22}
+            />
+          </SendButton>
+        </InputContainer>
       </ScreenLayout>
     </KeyboardAvoidingView>
   );
