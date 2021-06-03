@@ -1,4 +1,10 @@
-import { gql, useMutation, useQuery, useSubscription } from '@apollo/client';
+import {
+  gql,
+  useApolloClient,
+  useMutation,
+  useQuery,
+  useSubscription,
+} from '@apollo/client';
 import React, { useEffect, useRef } from 'react';
 import { FlatList, KeyboardAvoidingView, View } from 'react-native';
 import ScreenLayout from '../components/ScreenLayout';
@@ -161,6 +167,50 @@ export default function Room({ route, navigation }) {
     },
   });
 
+  const client = useApolloClient();
+
+  // 이전의쿼리데이터인 prevQuery랑
+  // subscriptions이 발동하여 상대방이 메시지를 보냈을때 데이터가 전달되는 options
+  const updateQuery = (prevQuery, options) => {
+    // cache에 덮어싀울 데이터(roomupdates)를 추출한다
+    const {
+      subscriptionData: {
+        data: { roomUpdates: message },
+      },
+    } = options;
+
+    if (message.id) {
+      // 캐쉬에 덮어씌우는 작업이 완료되면 해당 데이터들을 반환한다.
+      const messageFragment = client.cache.writeFragment({
+        // 어디에 덮어씌울지 대상을 지정한후(Message)
+        fragment: gql`
+          fragment NewMessage on Message {
+            id
+            payload
+            user {
+              username
+              avatar
+            }
+            read
+          }
+        `,
+
+        // 위에 덮어씌울 대상에 실제로 데이터를 덮어씌운다
+        data: message,
+      });
+
+      // 그리고 (Room에도 덮어씌워준다)
+      client.cache.modify({
+        id: `Room:${route.params.id}`,
+        fields: {
+          messages(prev) {
+            return [...prev, messageFragment];
+          },
+        },
+      });
+    }
+  };
+
   useEffect(() => {
     // data.seeRoom이 있다는말은 ROOM_QUERY가 실행된뒤 seeRoom을 반환했다는 의미
     if (data?.seeRoom) {
@@ -171,6 +221,7 @@ export default function Room({ route, navigation }) {
         variables: {
           id: route?.params?.id,
         },
+        updateQuery,
       });
     }
   }, [data]);

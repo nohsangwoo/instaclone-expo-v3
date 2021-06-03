@@ -466,3 +466,7 @@ https://docs.expo.io/versions/latest/sdk/camera/ 기능 참고
 
 - 근데 기본적으로 useQuery안에 subscribeToMore 라는 기능이 내장돼있음
   이기능은 해당 쿼리를 실행한 데이터가 업데이트 될때마다 실시간으로 받아주는 기능임
+
+# 18.11 Subscriptions part Three
+
+- subscribeToMore이 실행될때 캐시 업데이트 구현
