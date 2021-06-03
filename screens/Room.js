@@ -75,8 +75,14 @@ export default function Room({ route, navigation }) {
         sendMessage: { ok, id },
       },
     } = result;
+
+    // mutation이 성공했다는 의미이 ok반환값이랑
+    // 로그인한 유저의 정보가 존재한다는 의미의 meData
+    // 두개다 존재한다면 진행한다.
     if (ok && meData) {
       const { message } = getValues();
+
+      // cache에 덮어씌울 메시지 오브젝트를 생성
       const messageObj = {
         id,
         payload: message,
@@ -87,6 +93,7 @@ export default function Room({ route, navigation }) {
         read: true,
         __typename: 'Message',
       };
+      //   writeFragment을 이용하여 메시지 오브젝트를 덮어씌우는 방법
       const messageFragment = cache.writeFragment({
         fragment: gql`
           fragment NewMessage on Message {
@@ -101,6 +108,7 @@ export default function Room({ route, navigation }) {
         `,
         data: messageObj,
       });
+      // seeRoom이라는 메시지를 갖고있는 캐시에 또한 덮어씌우기 위한 작업
       cache.modify({
         id: `Room:${route.params.id}`,
         fields: {
@@ -135,7 +143,9 @@ export default function Room({ route, navigation }) {
     }
   };
 
+  //  react hook form의 text input에 등록
   useEffect(() => {
+    //   메시지가 있어야지만 메시지 보내는 기능의 의미가 있으니 required:true 옵션 설정
     register('message', { required: true });
   }, [register]);
 
@@ -182,7 +192,9 @@ export default function Room({ route, navigation }) {
           returnKeyLabel="Send Message"
           //for ios
           returnKeyType="send"
+          //  input창에 text를 입력할때마나 message에 해당 입력된 값을 실시간으로 저장해줌
           onChangeText={text => setValue('message', text)}
+          //   즉 return 위치의 버튼을 눌렀을때(오른쪽하단의 submit버튼 이름이 뭐든) 작동하는 함수 커스터마이징
           onSubmitEditing={handleSubmit(onValid)}
         />
       </ScreenLayout>
