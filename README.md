@@ -452,3 +452,10 @@ https://docs.expo.io/versions/latest/sdk/camera/ 기능 참고
 
 - send버튼 icon으로 추가(이때 message input value가 존재하지 않는다면 동작하지 않게 설정)
 - DM text를 입력하면 자동으로 맨밑으로 향하게 css적인 설정 추가
+
+# 18.9 Subscriptions part One
+
+- subscriptsions 을 위한 setting up
+  https://www.apollographql.com/docs/react/data/subscriptions/#1-install-required-libraries 참고
+
+  - wsLink에서 인증처리

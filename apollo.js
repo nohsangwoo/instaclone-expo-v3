@@ -3,12 +3,17 @@ import {
   createHttpLink,
   InMemoryCache,
   makeVar,
+  split,
 } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 import { setContext } from '@apollo/client/link/context';
-import { offsetLimitPagination } from '@apollo/client/utilities';
+import {
+  getMainDefinition,
+  offsetLimitPagination,
+} from '@apollo/client/utilities';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createUploadLink } from 'apollo-upload-client';
+import { WebSocketLink } from '@apollo/client/link/ws';
 
 export const isLoggedInVar = makeVar(false);
 export const tokenVar = makeVar('');
@@ -38,6 +43,18 @@ export const logUserOut = async () => {
 const uploadHttpLink = createUploadLink({
   // uri: 'https://dangerous-elephant-91.loca.lt/graphql',
   uri: 'http://localhost:4000/graphql',
+});
+
+// for subscriptions
+const wsLink = new WebSocketLink({
+  uri: 'ws://localhost:4000/graphql',
+  options: {
+    reconnect: true,
+    // 전달 받은 Params에서 token을 저장함
+    connectionParams: {
+      token: tokenVar(),
+    },
+  },
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -77,9 +94,28 @@ export const cache = new InMemoryCache({
   },
 });
 
+const httpLinks = authLink.concat(onErrorLink).concat(uploadHttpLink);
+
+// split function: uploadHttpLink, wsLink을 구분하여 언제 각각 사용할지 지정해줌
+// spilt func takes 3 arguments
+// 첫번째는 함수 두번째는 wsLink, 세번째는 httpLink
+const splitLink = split(
+  // split함수의 첫번째 인자의 함수 조건이 true이면 wsLink를 선택하고
+  // split함수의 두번째 인자의 함수 조건이 false이면 httpLink를 선택한다
+  ({ query }) => {
+    const definition = getMainDefinition(query);
+    return (
+      definition.kind === 'OperationDefinition' &&
+      definition.operation === 'subscription'
+    );
+  },
+  wsLink,
+  httpLinks
+);
+
 const client = new ApolloClient({
   // httplink가 항상 마지막에 연결돼야함
-  link: authLink.concat(onErrorLink).concat(uploadHttpLink),
+  link: splitLink,
   cache,
 });
 export default client;
