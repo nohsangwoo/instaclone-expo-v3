@@ -51,9 +51,9 @@ const wsLink = new WebSocketLink({
   options: {
     reconnect: true,
     // 전달 받은 Params에서 token을 저장함
-    connectionParams: {
+    connectionParams: () => ({
       token: tokenVar(),
-    },
+    }),
   },
 });
 

@@ -458,4 +458,11 @@ https://docs.expo.io/versions/latest/sdk/camera/ 기능 참고
 - subscriptsions 을 위한 setting up
   https://www.apollographql.com/docs/react/data/subscriptions/#1-install-required-libraries 참고
 
-  - wsLink에서 인증처리
+- wsLink에서 인증처리
+
+# 18.9 Subscriptions part One
+
+- 실시간으로 상대방이 나에게 메시지를 보낸걸 캐치하고 렌더링하기위한 subscriptions 사용
+
+- 근데 기본적으로 useQuery안에 subscribeToMore 라는 기능이 내장돼있음
+  이기능은 해당 쿼리를 실행한 데이터가 업데이트 될때마다 실시간으로 받아주는 기능임
