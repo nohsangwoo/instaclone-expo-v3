@@ -46,6 +46,12 @@
 <br />
 <hr />
 
+## UploadFile
+
+<img height="400px;" style="object-fit:cover;" src="./README_IMG/uploadFile.gif" />
+<br />
+<hr />
+
 # Dev logs
 
 ## 실리콘 m1용 expo 실행시 세팅방법(watchman 설치법)
