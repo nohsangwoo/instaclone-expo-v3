@@ -5,7 +5,7 @@
 <div style="display:flex; justify-content:center;">
   <img height="400px" src="./README_IMG/before_login_home.gif"/>
 </div>
-<div style="margin-bottom:80px; "></div>
+<br />
 
 <hr />
 
@@ -14,6 +14,12 @@
 <img height="400px;" style="object-fit:cover;" src="./README_IMG/create-new-account.gif" />
 <br />
 
+<hr />
+
+## Login
+
+<img height="400px;" style="object-fit:cover;" src="./README_IMG/login.gif" />
+<br />
 <hr />
 
 # Dev logs
