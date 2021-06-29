@@ -28,7 +28,7 @@
 
 <hr />
 
-## ifinite scroll (home screen)
+## Ifinite scroll (home screen)
 
 <img height="400px;" style="object-fit:cover;" src="./README_IMG/infinite-scroll.gif" />
 <br />
@@ -37,6 +37,12 @@
 ## DirectMessage (realtime - graphql subscriptions)
 
 <img height="400px;" style="object-fit:cover;" src="./README_IMG/direct-message.gif" />
+<br />
+<hr />
+
+## Search
+
+<img height="400px;" style="object-fit:cover;" src="./README_IMG/search.gif" />
 <br />
 <hr />
 
