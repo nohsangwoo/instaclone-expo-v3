@@ -6,7 +6,6 @@
   <img height="400px" src="./README_IMG/before_login_home.gif"/>
 </div>
 <br />
-
 <hr />
 
 ## Create new account
@@ -19,6 +18,25 @@
 ## Login
 
 <img height="400px;" style="object-fit:cover;" src="./README_IMG/login.gif" />
+<br />
+<hr />
+
+## like func
+
+<img style="object-fit:cover"; height="400px" src="./README_IMG/likeFunc.gif"/>
+<br />
+
+<hr />
+
+## ifinite scroll (home screen)
+
+<img height="400px;" style="object-fit:cover;" src="./README_IMG/infinite-scroll.gif" />
+<br />
+<hr />
+
+## DirectMessage (realtime - graphql subscriptions)
+
+<img height="400px;" style="object-fit:cover;" src="./README_IMG/direct-message.gif" />
 <br />
 <hr />
 
