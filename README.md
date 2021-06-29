@@ -61,16 +61,15 @@
 
 ## 실리콘 m1용 expo 실행시 세팅방법(watchman 설치법)
 
-- ref : https://chanho-yoon.github.io/silicon%20mac/m1-homebrew/
+> ref : https://chanho-yoon.github.io/silicon%20mac/m1-homebrew/
 
 - expo issue1:
 
-  - 실리콘 맥북용 home brew설치 & 하위 내용 순서대로 CLI 입력
+  - 실리콘 맥북용 home brew 설치 요망
 
-- following commands in the order:
+> following commands in the order:
 
 npm install
-create-new-account
 
 ```
 brew update
@@ -80,12 +79,14 @@ expo start
 
 And it worked !
 
+<br />
 <hr />
 
 ## App loading...
 
-- ref : https://docs.expo.io/versions/latest/sdk/app-loading/
 - 내가 원할때까지 앱 로딩을 막아주는 기능
+
+> ref : https://docs.expo.io/versions/latest/sdk/app-loading/
 
 expo install
 
@@ -93,9 +94,12 @@ expo install
 expo-app-loading
 ```
 
+<br />
+<hr />
+
 ## react navigation
 
-- ref : https://reactnavigation.org/docs/getting-started
+> ref : https://reactnavigation.org/docs/getting-started
 
 npm install
 
@@ -109,6 +113,7 @@ expo install
 react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
 ```
 
+<br />
 <hr />
 
 ## debugging in expo
@@ -120,8 +125,9 @@ react-native-gesture-handler react-native-reanimated react-native-screens react-
 5. expo start후 앱 실행
 6. 이후 콘솔창에서 확인
 
-- ref : https://www.youtube.com/watch?v=9g2_j9U_l2U
+> ref : https://www.youtube.com/watch?v=9g2_j9U_l2U
 
+<br />
 <hr />
 
 ## stack navigator
@@ -132,6 +138,7 @@ npm install
 @react-navigation/stack
 ```
 
+<br />
 <hr />
 
 ## Moving Through Screens
@@ -139,16 +146,23 @@ npm install
 - TouchableOpacity
   해당 screen으로 이동하는 방법 중 하나 말그대로 터치하면 살짝 흐려지는 효과와 함께 해당 스크린으로 이동함
 
+<br />
+<hr />
+
 # about reactnavigation
 
-- https://reactnavigation.org/
+> ref : https://reactnavigation.org/
 
-# 14.2 Navigator Props
+<br />
+<hr />
 
-https://reactnavigation.org/docs/stack-navigator
+## Navigator Props
 
-- initialRouteName
-  첫화면의 라우트를 지정할수있음
+> ref : https://reactnavigation.org/docs/stack-navigator
+
+<br />
+
+initialRouteName : 첫화면의 라우트를 지정할수있음
 
 ```
   return (
@@ -161,8 +175,9 @@ https://reactnavigation.org/docs/stack-navigator
   );
 ```
 
-- mode
-  화면이 띄워지는 형식을 지정
+<br />
+
+mode : 화면이 띄워지는 형식을 지정
 
 ```
   return (
@@ -175,7 +190,9 @@ https://reactnavigation.org/docs/stack-navigator
   );
 ```
 
-- screen options (하위 route에 옵션을 전체 적용함
+<br />
+
+screen options (하위 route에 옵션을 전체 적용함
 
 ````
   <Stack.Navigator
@@ -195,20 +212,26 @@ https://reactnavigation.org/docs/stack-navigator
 ```)
 ````
 
-# 14.3 Dark Mode
+## Dark Mode
 
 - styled-components in react native expo
-  https://styled-components.com/
+
+  > ref : https://styled-components.com/
+
 - 외형을 어떤걸 선택했는지 기억해줌
-  https://docs.expo.io/versions/latest/sdk/appearance/
+
+  > ref : https://docs.expo.io/versions/latest/sdk/appearance/
 
 - app.json에 ios 및 android 등의 설정이 기록돼있음
 
-# 14.5 Create Account part One
+## Create Account part One
 
-# expo eject tip1
+## expo eject tip1
 
-eject를 할 때, ExpoKit이라는 네이티브 라이브러리를 남겨놓으면 EXPO에 내장된 다양한 React 컴포넌트들을 이용해 네이티브 기능을 쉽게 사용할 수 있습니다. 실제로 꾹꾹이 프로젝트에서도, EXPO의 Google 지도 컴포넌트(<MapView />)를 이용해 빠르게 지도 기능을 구현할 수 있었습니다.
+<pre>
+eject를 할 때, ExpoKit이라는 네이티브 라이브러리를 남겨놓으면 EXPO에 내장된 다양한 React 컴포넌트들을 이용해 네이티브 기능을 쉽게 사용할 수 있음. 
+실제로 꾹꾹이 프로젝트에서도 EXPO의 Google 지도 컴포넌트(<MapView />)를 이용해 빠르게 지도 기능을 구현할 수 있다.
+</pre>
 
 # react native cli setup
 
