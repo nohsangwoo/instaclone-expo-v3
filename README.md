@@ -1,33 +1,76 @@
-# 실리콘 m1용 expo 실행시 세팅방법(watchman 설치법)
+# 기능 구현
 
-- 참고
-  https://chanho-yoon.github.io/silicon%20mac/m1-homebrew/
+## before login home
 
-실리콘 맥북용 home brew설치 후
+<div style="display:flex; justify-content:center;">
+  <img height="400px" src="./README_IMG/before_login_home.gif"/>
+</div>
+<div style="margin-bottom:80px; "></div>
 
-아래내용 설치해야 expo작동
-I ran the following commands in the order:
+<hr />
+
+## Create new account
+
+<img height="400px;" style="object-fit:cover;" src="./README_IMG/create-new-account.gif" />
+<br />
+
+<hr />
+
+# Dev logs
+
+## 실리콘 m1용 expo 실행시 세팅방법(watchman 설치법)
+
+- ref : https://chanho-yoon.github.io/silicon%20mac/m1-homebrew/
+
+- expo issue1:
+
+  - 실리콘 맥북용 home brew설치 & 하위 내용 순서대로 CLI 입력
+
+- following commands in the order:
 
 npm install
+create-new-account
+
+```
 brew update
 brew install watchman
 expo start
+```
 
 And it worked !
 
-# App loading...
+<hr />
 
-- https://docs.expo.io/versions/latest/sdk/app-loading/
+## App loading...
+
+- ref : https://docs.expo.io/versions/latest/sdk/app-loading/
 - 내가 원할때까지 앱 로딩을 막아주는 기능
-  expo install expo-app-loading
 
-# 13.7 react navigation
+expo install
 
-- https://reactnavigation.org/docs/getting-started
-- npm install @react-navigation/native
-- expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
+```
+expo-app-loading
+```
 
-# debugging in expo
+## react navigation
+
+- ref : https://reactnavigation.org/docs/getting-started
+
+npm install
+
+```
+@react-navigation/native
+```
+
+expo install
+
+```
+react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
+```
+
+<hr />
+
+## debugging in expo
 
 1. react native tools extension 설치
 2. vsc settings에서 react native config에서 port 19001로 변경
@@ -36,12 +79,21 @@ And it worked !
 5. expo start후 앱 실행
 6. 이후 콘솔창에서 확인
 
-- https://www.youtube.com/watch?v=9g2_j9U_l2U 참고
+- ref : https://www.youtube.com/watch?v=9g2_j9U_l2U
 
-- stack navigator설치
-  npm install @react-navigation/stack
+<hr />
 
-# 14.1 Moving Through Screens
+## stack navigator
+
+npm install
+
+```
+@react-navigation/stack
+```
+
+<hr />
+
+## Moving Through Screens
 
 - TouchableOpacity
   해당 screen으로 이동하는 방법 중 하나 말그대로 터치하면 살짝 흐려지는 효과와 함께 해당 스크린으로 이동함
