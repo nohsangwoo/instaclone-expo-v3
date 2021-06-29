@@ -23,7 +23,7 @@
 
 ## like func
 
-<img style="object-fit:cover"; height="400px" src="./README_IMG/likeFunc.gif"/>
+<img height="400px;" style="object-fit:cover;" src="./README_IMG/likeFunc.gif" />
 <br />
 
 <hr />
