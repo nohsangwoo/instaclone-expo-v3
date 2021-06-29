@@ -52,6 +52,11 @@
 <br />
 <hr />
 
+## Take photo (use camera)
+
+- 해당 기능은 실제 폰에서 작동
+  (simulator에서 작동 안함)
+
 # Dev logs
 
 ## 실리콘 m1용 expo 실행시 세팅방법(watchman 설치법)
