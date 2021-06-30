@@ -1,3 +1,60 @@
+# Instagram App (Expo)
+
+<br><br>
+
+<br><br>
+
+## BackEnd
+
+> ref : https://github.com/nohsangwoo/instaclone-backend-v3
+
+### 설명에 첨부된 gif파일 크기로 인하여 readme파일을 불러오는데 시간이 좀더 소요될 수 있습니다. 많이 기다려주세요.
+
+<br><br>
+
+<br><br>
+
+# 구현 내용 및 컨셉
+
+|        user         |       Photos       |
+| :-----------------: | :----------------: |
+|    ✔ Email Login    |   ✔ Search Photo   |
+|   ✔ User Profile    |    ✔ Like Photo    |
+| ✔ Follow / Unfollow | ✔ Commet on Photos |
+|  ✔ Direct Messages  |    ✔ Photo Feed    |
+|                     |   ✔ Upload Photo   |
+|                     |    ✔ Take Photo    |
+
+<br /><br />
+
+|       App       | Deployment |
+| :-------------: | :--------: |
+|  ✔ Navigation   |  ✔ Heroku  |
+|    ✔ Camera     | ✔ Netlify  |
+|  ✔ Permissions  |            |
+| ✔ Media Library |            |
+|  ✔ Geolocation  |            |
+
+<br><br>
+
+<br><br>
+
+# 사용된 기술
+
+- React Native
+- expo
+- apollo-graphql(for graphql)
+- websocket(for realtime subscription)
+- reactiveVariable
+- react-hook-form
+- styled-components
+- sanitize-html
+- prisma studio(DB제어및확인)
+
+<br><br>
+
+<br><br>
+
 # 기능 구현
 
 ## before login home
@@ -5,57 +62,92 @@
 <div style="display:flex; justify-content:center;">
   <img height="400px" src="./README_IMG/before_login_home.gif"/>
 </div>
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## Create new account
 
 <img height="400px;" style="object-fit:cover;" src="./README_IMG/create-new-account.gif" />
-<br />
+
+<br><br>
+
+<br><br>
+
+<br><br>
 
 <hr />
 
 ## Login
 
 <img height="400px;" style="object-fit:cover;" src="./README_IMG/login.gif" />
-<br />
+
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## like func
 
 <img height="400px;" style="object-fit:cover;" src="./README_IMG/likeFunc.gif" />
-<br />
+
+<br><br>
+
+<br><br>
 
 <hr />
 
 ## Ifinite scroll (home screen)
 
 <img height="400px;" style="object-fit:cover;" src="./README_IMG/infinite-scroll.gif" />
-<br />
+
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## DirectMessage (realtime - graphql subscriptions)
 
 <img height="400px;" style="object-fit:cover;" src="./README_IMG/direct-message.gif" />
-<br />
+
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## Search
 
 <img height="400px;" style="object-fit:cover;" src="./README_IMG/search.gif" />
-<br />
+
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## UploadFile
 
 <img height="400px;" style="object-fit:cover;" src="./README_IMG/uploadFile.gif" />
-<br />
+
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## Take photo (use camera)
 
 - 해당 기능은 실제 폰에서 작동
   (simulator에서 작동 안함)
+
+<br><br>
+
+<br><br>
 
 # Dev logs
 
@@ -79,7 +171,10 @@ expo start
 
 And it worked !
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## App loading...
@@ -94,7 +189,10 @@ expo install
 expo-app-loading
 ```
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## react navigation
@@ -113,7 +211,10 @@ expo install
 react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
 ```
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## debugging in expo
@@ -127,7 +228,10 @@ react-native-gesture-handler react-native-reanimated react-native-screens react-
 
 > ref : https://www.youtube.com/watch?v=9g2_j9U_l2U
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## stack navigator
@@ -138,29 +242,37 @@ npm install
 @react-navigation/stack
 ```
 
-<br />
-<hr />
+<br><br>
 
+<br><br>
+
+<hr />
 ## Moving Through Screens
 
 - TouchableOpacity
   해당 screen으로 이동하는 방법 중 하나 말그대로 터치하면 살짝 흐려지는 효과와 함께 해당 스크린으로 이동함
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
-# about reactnavigation
+## about reactnavigation
 
 > ref : https://reactnavigation.org/
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## Navigator Props
 
 > ref : https://reactnavigation.org/docs/stack-navigator
 
-<br />
+<br /><br />
 
 initialRouteName : 첫화면의 라우트를 지정할수있음
 
@@ -175,7 +287,7 @@ initialRouteName : 첫화면의 라우트를 지정할수있음
   );
 ```
 
-<br />
+<br /><br />
 
 mode : 화면이 띄워지는 형식을 지정
 
@@ -190,7 +302,7 @@ mode : 화면이 띄워지는 형식을 지정
   );
 ```
 
-<br />
+<br /><br />
 
 screen options (하위 route에 옵션을 전체 적용함
 
@@ -212,7 +324,10 @@ screen options (하위 route에 옵션을 전체 적용함
 ```)
 ````
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## Dark Mode
@@ -227,12 +342,20 @@ screen options (하위 route에 옵션을 전체 적용함
 
 - app.json에 ios 및 android 등의 설정이 기록돼있음
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
-## Create Account part One
+## Create Account
 
-<br />
+- 회원가입 기능 구현
+
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## expo eject tip1
@@ -242,26 +365,40 @@ eject를 할 때, ExpoKit이라는 네이티브 라이브러리를 남겨놓으�
 실제로 꾹꾹이 프로젝트에서도 EXPO의 Google 지도 컴포넌트(<MapView />)를 이용해 빠르게 지도 기능을 구현할 수 있다.
 </pre>
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## react native cli setup
 
 > ref : https://dev-yakuza.posstree.com/ko/react-native/install-on-mac/
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## eject issue
 
 > ref : https://96yj.tistory.com/7
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## Login Screen
 
-<br />
+- 로그인 기능 구현
+
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## TouchableWithoutFeedback 버그 우회
@@ -274,17 +411,26 @@ eject를 할 때, ExpoKit이라는 네이티브 라이브러리를 남겨놓으�
     >
 ```
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## React Hooks Forms on Native
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## Apollo Client
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## Log In Mutation & reactive variable
@@ -299,10 +445,15 @@ navigation.navigate('LogIn', {
 });
 ```
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
-# ngrok or localtunnel
+## ngrok or localtunnel
+
+- 포트포워딩을 대체
 
 https://ngrok.com/
 https://github.com/localtunnel/localtunnel
@@ -315,7 +466,10 @@ https://github.com/localtunnel/localtunnel
 - ActivityIndicator
   로딩애니메이션
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## react native directory
@@ -324,7 +478,10 @@ https://github.com/localtunnel/localtunnel
 
 > ref : https://reactnative.directory/
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## apply AsyncStorage
@@ -335,7 +492,10 @@ https://github.com/localtunnel/localtunnel
   > - (너무 많이 쓰는 패키지라 공식문서에도 소개됨)
   > - https://docs.expo.io/versions/latest/sdk/async-storage/
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## Stack and Tabs part
@@ -343,7 +503,10 @@ https://github.com/localtunnel/localtunnel
 - tab navigation 안에서 stack navigation을 구현 가능하다
 - (다른 종류의 네비게이션도 같은 방식으로 적용 가능)
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## Apollo Auth
@@ -351,7 +514,10 @@ https://github.com/localtunnel/localtunnel
 - navigation header에 이미지 삽입
 - apollo setting
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## FlatList
@@ -360,14 +526,20 @@ https://github.com/localtunnel/localtunnel
 
 - 화면에 나타나는 컴포넌트만 일단 렌더링하고 화면의 범위를 넘어서는 부분의 컴포넌트는 스크롤 하는경우에 추가로 렌더링되게 구현
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## Photo
 
 - getSize로 이미지의 실제 크기를 불러와 컨트롤 한다
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## Pull to Refresh(Feed.js)
@@ -375,7 +547,10 @@ https://github.com/localtunnel/localtunnel
 - 화면을 아래로 잡아당겼을때 새로고침되는 기능
 - refetch : 이전에 불러온 쿼리를 새롭게 다시 불러오는 기능
 
-<br/>
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## Infinite Scrolling
@@ -409,7 +584,13 @@ cache: new InMemoryCache({
 
 ## Cache Persist
 
-persist와 비슷한 기능
+- persist와 비슷한 기능
+
+<br><br>
+
+<br><br>
+
+<hr />
 
 ## Likes part
 
@@ -433,7 +614,10 @@ persist와 비슷한 기능
 
 - and serialize의 bug 수정(app.js)
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## Header Domination
@@ -441,7 +625,10 @@ persist와 비슷한 기능
 - navigation.setOptions
   네비게이션과 관련된 옵션을 설정가능(타이틀이나, 색, 정렬 등등..)
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## Search part
@@ -450,27 +637,39 @@ persist와 비슷한 기능
 
   - 이부분을 클릭하면 키보드입력창이 비활성화 되게 설정
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## useLazyQuery
 
-보통 쿼리문은 hook을 생성과 동시에 실행되지만
-LazyQuery의 경우 hook생성시 동작트리거를 또 만들어 해당 트리거가 호출되는 시점에서 query가 실행된다
+- 보통 쿼리문은 hook을 생성과 동시에 실행되지만
+  LazyQuery의 경우 hook생성시 동작트리거를 또 만들어 해당 트리거가 호출되는 시점에서 query가 실행된다
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## FlatList - numColumns
 
-반복되어 렌더링되는 배열의 column 갯 수
+- 반복되어 렌더링되는 배열의 column 갯 수
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## comment 부분 작업 seeComments 작업은 끝냈고 create, delete 작업을 나중에 진행
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## Modal Navigator
@@ -480,7 +679,10 @@ LazyQuery의 경우 hook생성시 동작트리거를 또 만들어 해당 트리
   이때 camera가 나타나는 방식이 카드 형태가 아니라 모달 형태로 나타나게 설정
 - navigator의 route(props)는 navigation에 접근 가능
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## Bottom Tabs Navigator
@@ -489,14 +691,20 @@ LazyQuery의 경우 hook생성시 동작트리거를 또 만들어 해당 트리
   또다른 네비게이터종류
   > ref : https://reactnavigation.org/docs/material-top-tab-navigator/
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## Select Photo
 
 - navigation option설정
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## expo-media-library 세팅
@@ -510,8 +718,11 @@ LazyQuery의 경우 hook생성시 동작트리거를 또 만들어 해당 트리
 - camera - selectPhoto - headerRight를 커스터마이징
 - 사진첩에서 로드된 사진을 선택할때 선택된 사진은 표기됨
 
-<br />
-<hr / >
+<br><br>
+
+<br><br>
+
+<hr />
 
 ## Take Photo part
 
@@ -537,8 +748,11 @@ expo install
 - expo-file-system
 - 사진 찍는 기능 추가(아직 시스템에 저장은 안됨)
 
-<br />
-<hr / >
+<br><br>
+
+<br><br>
+
+<hr />
 
 ## expo camera
 
@@ -549,8 +763,11 @@ expo install
 - 업로드를 위한 폼 정리
 - alert사용방법
 
-<br />
-<hr / >
+<br><br>
+
+<br><br>
+
+<hr />
 
 ## Upload Screen
 
@@ -575,7 +792,10 @@ expo install
 
 > ref : https://www.apollographql.com/docs/apollo-server/data/file-uploads/
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## 사진 업로드후 캐쉬업데이트 - 앱에서 cache.modify하는 법
@@ -591,7 +811,10 @@ npm install
 react-native-uuid
 ```
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## Messages Navigator
@@ -616,7 +839,10 @@ react-native-uuid
 - send버튼 icon으로 추가(이때 message input value가 존재하지 않는다면 동작하지 않게 설정)
 - DM text를 입력하면 자동으로 맨밑으로 향하게 css적인 설정 추가
 
-<br />
+<br><br>
+
+<br><br>
+
 <hr />
 
 ## Subscriptions
